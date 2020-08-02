@@ -20,19 +20,25 @@ head *{
 script{
   display: none;
 }
+
 announcement{
   border: 1px solid black;
   justify-content: center;
   align-items: center;
   background-color: yellow;
 }
+
 controls{
   flex-direction: row;
   align-items: center;
 }
-
+nav{
+  flex-direction: row;
+}
 nav ul{
   flex-direction: row;
+  list-style: none;
+  justify-content: stretch;
 }
 
 cta{
@@ -43,6 +49,13 @@ cta{
 banner{
   background-size: cover;
   background-image: url("https://placekitten.com/960/400");
+  align-items: center;
+  color: white;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 spacer{
   flex: 1;
