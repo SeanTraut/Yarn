@@ -20,10 +20,26 @@ head *{
 script{
   display: none;
 }
+announcement{
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  background-color: yellow;
+}
+controls{
+  flex-direction: row;
+  align-items: center;
+}
 
-nav{
+nav ul{
   flex-direction: row;
 }
+
+cta{
+  flex-direction: row;
+  align-items: center;
+}
+
 banner{
   background-size: cover;
   background-image: url("https://placekitten.com/960/400");
