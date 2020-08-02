@@ -24,6 +24,10 @@ script{
 nav{
   flex-direction: row;
 }
+banner{
+  background-size: cover;
+  background-image: url("https://placekitten.com/960/400");
+}
 spacer{
   flex: 1;
 }
