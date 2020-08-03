@@ -1,13 +1,13 @@
 @import "reset.css";
 @import "base.css";
 
+/* -====- Header -====- */
 announcement{
   border: 1px solid black;
   justify-content: center;
   align-items: center;
   background-color: yellow;
 }
-
 controls{
   flex-direction: row;
   align-items: center;
@@ -42,12 +42,42 @@ banner{
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
-  height: 200px;
+  height: 400px;
   justify-content: center;
+  border: 1px solid black;
 }
 .main-title{
   font-size: 54px;
 }
 .main-sub-title{
   font-size: 28px;
+}
+
+/* -====- Section -====- */
+main{
+  align-items: center;
+}
+section{
+  width: 900px;
+}
+section-header{
+  justify-content: center;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 32px;
+}
+product-row{
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+section-expand{
+  flex: 0;
+  max-width: 100px;
+  align-self: center;
+  justify-content: center;
+  text-align: center;
+  background: yellow;
+  border: 1px solid black;
+  border-radius: 5px;
 }
