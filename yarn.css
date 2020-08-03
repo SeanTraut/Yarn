@@ -58,6 +58,7 @@ main{
   align-items: center;
 }
 section{
+  display: flex;
   width: 900px;
 }
 section-header{
@@ -80,4 +81,23 @@ section-expand{
   background: yellow;
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.product-category product-row{
+  justify-content: center;
+}
+category{
+  margin: 0 20px;
+  align-items: center;
+}
+
+footer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+social-media{
+  flex-direction:row;
+  font-size: 36px;
 }
