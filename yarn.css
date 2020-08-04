@@ -11,7 +11,7 @@ announcement{
 controls{
   flex-direction: row;
   align-items: center;
-  margin: 10px 10px;
+  margin: 10px 5vw;
 }
 nav{
   flex: 1;
@@ -72,6 +72,11 @@ product-row{
   justify-content: space-between;
   margin-bottom: 40px;
 }
+
+product{
+  background: red;
+}
+
 section-expand{
   flex: 0;
   max-width: 100px;
