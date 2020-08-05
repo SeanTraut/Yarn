@@ -10,23 +10,33 @@
     </head>
     <body>
         <header>
-            <announcement>Everything must go! Only 40% more for 100% less content!</announcement>
+            <announcement>Order processing time is 1 week. Check out the FAQ tab below.</announcement>
             <controls>
-                <img src = "https://placekitten.com/100/100" class = "logo" />
+                <img src = "https://placekitten.com/160/95" class = "logo" />
                 <nav class = "main-nav">
                     <ul>
                         <li class = "main-nav-button">Home</li>
-                        <li class = "main-nav-button">Shop</li>
-                        <li class = "main-nav-button">About</li>
+                        <li class = "main-nav-button">
+                            <nav-text>Shop</nav-text>
+                            <nav-dropdown>
+                                <ion-icon name="chevron-down-outline" class = "nav-arrow"></ion-icon> 
+                            </nav-dropdown>
+                        </li>
+                        <li class = "main-nav-button">
+                            <nav-text>About</nav-text>
+                            <nav-dropdown>
+                                <ion-icon name="chevron-down-outline" class = "nav-arrow"></ion-icon> 
+                            </nav-dropdown>
+                        </li>
                         <li class = "main-nav-button">FAQs</li>
                         <li class = "main-nav-button">Contact</li>
-                        <li class = "main-nav-button">Etsy</li>
+                        <li class = "main-nav-button">Launch/Restock Info</li>
                     </ul>
                 </nav>
                 <cta>
-                    <ion-icon name="search-sharp" class =  "search"></ion-icon>
-                    <ion-icon name="cart-sharp" class = "cart"></ion-icon>
-                    <ion-icon name="menu-sharp" class = "menu"></ion-icon>
+                    <ion-icon name="search-outline" class =  "search"></ion-icon>
+                    <ion-icon name="person-outline"  class = "person"></ion-icon>
+                    <ion-icon name="lock-closed-outline" class = "bag"></ion-icon>
                 </cta>
             </controls>
             <banner>
