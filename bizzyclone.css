@@ -1,4 +1,25 @@
 /* === General === */
+@font-face{
+    font-family: 'Alfie';
+    src: url('./assets/fonts/alfie.woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Abel';
+    src: url('./assets/fonts/abel.woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Proximanova';
+    src: url('./assets/fonts/proximanova-regular-webfont.woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html, body{
     display: flex;
     flex-direction: column;
@@ -124,6 +145,7 @@ hero{
     margin: 0;
     font-size: 65px;
     font-family: Alfie, serif;
+    font-weight: 400;
     text-shadow: 0 0 4px rgba(0,0,0,0.4)
 }
 .page-subtitle{
@@ -131,7 +153,8 @@ hero{
     margin-top: 40px;
     max-width: 48ch;
     font-size: 20px;
-    font-family: Able, sans-serif;
+    font-family: Abel, sans-serif;
+    font-weight: 400;
     text-shadow: 0 0 4px rgba(0,0,0,0.4)
 }
 cta{
@@ -222,8 +245,70 @@ lower-wrapper{
     background: #f5f5f5;
 }
 footer{
+    flex: 1;
     flex-direction: row;
     align-self: center;
     max-width: 1200px;
     padding-top: 45px;
 }
+footer-column{
+    flex: 1;
+}
+column-header{
+    font-size: 17px;
+    font-family: Alfie, seif;
+    margin-bottom: 25px;
+}
+
+.quick-links{
+    padding-right: 45px;
+}
+column-text{
+    padding-bottom: 5px;
+}
+
+.blurb{
+    padding: 0 45px;
+}
+
+.newsletter{
+    padding-left: 45px;
+}
+
+button.subscribe{
+    margin-top: 10px;
+    width: 110px;
+    text-align: center;
+    user-select: none;
+    color: white;
+    font-family: Helvetica;
+    font-size: 13px;
+    padding: 9px 24px;
+    border: 1px solid #7745ae;
+    border-radius: 20px;
+    background: #7745ae;
+}
+
+input:first-of-type{
+    margin-top: 0;
+}
+input{
+    color: rgb(121, 121, 121);
+    background: #f5f5f5;
+    font-family: Helvetica;
+    width: 240px;
+    height: 40px;
+    margin-top: 10px;
+    padding: 9px 20px;
+    line-height: 20px;
+    font-size: 13px;
+    appearance: none;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 20px;
+}
+
+/*@media (min-width: 756px){
+    footer{
+        background: red;
+    }
+}*/
