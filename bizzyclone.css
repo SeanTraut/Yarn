@@ -48,6 +48,7 @@ script{
 spacer{
     flex: 1;
 }
+
  /* === Header === */
 announcement-bar{
     background-color: #7745ae;
@@ -132,7 +133,13 @@ controls ion-icon{
 @media (max-width: 425px){
     site-header{
         flex-direction: column;
+        padding: 0;
     }
+
+    controls{
+        margin-bottom: 20px;
+    }
+
 }
 
 /* === Hero Image === */
