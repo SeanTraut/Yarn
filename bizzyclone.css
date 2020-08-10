@@ -33,8 +33,6 @@ html, body{
     font-family: Abel, sans-serif;
     font-weight: 400;
     line-height: 1.5rem;
-    overflow-y: scroll;
-    overflow-x: auto;
 }
 *{
     display: flex;
@@ -345,6 +343,19 @@ footer input{
         flex: 0 1 50%;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
+    }
+    .quick-links{
+        padding: 0;
+    }
+    .blurb{
+        padding: 0 30px;
+        margin: 40px 0;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .newsletter{
+        padding: 0;
         align-items: center;
     }
 }
