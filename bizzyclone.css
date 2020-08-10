@@ -131,6 +131,12 @@ controls ion-icon{
     top: -35%;
 }
 
+@media (max-width: 425px){
+    site-header{
+        flex-direction: column;
+    }
+}
+
 /* === Hero Image === */
 hero{
     height: 600px;
@@ -210,9 +216,9 @@ product-row{
     }
 }
 
-@media (max-width: 320px){
+@media (max-width: 425px){
     center-wrapper{
-        max-width: 320px;
+        max-width: 425px;
     }
     product{
         flex: 0 0 95%;
@@ -334,8 +340,11 @@ footer input{
     border-radius: 20px;
 }
 
-/*@media (min-width: 756px){
+@media (max-width: 425px){
     footer{
-        background: red;
+        flex: 0 1 50%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-}*/
+}
