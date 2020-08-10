@@ -32,7 +32,7 @@ html, body{
     font-size: 16px;
     font-family: Abel, sans-serif;
     font-weight: 400;
-    line-height: 1.5rem;
+    line-height: 1.5;
 }
 *{
     display: flex;
@@ -127,7 +127,7 @@ controls ion-icon{
     z-index: 2;
     font-size: 12px;
     left: 88%;
-    top: -35%;
+    top: -25%;
 }
 
 @media (max-width: 425px){
@@ -193,6 +193,7 @@ summer-collection{
 section-title{
     margin-bottom: 55px;
     text-align: center;
+    font-family: Alfie, serif;
     font-size: 20px;
     text-transform: uppercase;
 }
@@ -207,6 +208,14 @@ product{
     flex: 0 0 20%;
     margin: 0 2.5% 5%;
 }
+
+product-image{
+    width: 100%;
+    padding-top: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 product-row{
     flex-direction: row;
     flex-wrap: wrap;
@@ -260,13 +269,25 @@ shop-by-style product-row:last-child{
 
 category{
     flex: 1;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    background-image: url("http://placekitten.com/120/120");
+    position: relative;
+}
+
+category-image{
+    width: 100%;
+    padding-top: 100%;
+    background-image: url("http://placekitten.com/185/185");
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: blur(1px) brightness(0.8) contrast(.7);
 }
 
 category-text{
+    position: absolute;
+    font-family: Alfie, serif;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    top: 50%;
+    left: 50%;
     color: white;
     text-shadow: 0 0 4px rgba(0,0,0,0.4)
 }
