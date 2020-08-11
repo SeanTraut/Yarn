@@ -91,7 +91,7 @@ nav li{
     margin: 0 15px;
 }
 
-nav li:hover{
+nav-text:hover{
     text-decoration: underline;
 }
 
@@ -99,6 +99,7 @@ dropdown-icon{
     margin-left: 8px;
     font-size: 12px;
 }
+
 ion-icon:hover{
     color: red;
 }
@@ -110,6 +111,10 @@ controls{
 
 controls ion-icon{
     margin-left: 20px;
+}
+
+controls ion-icon:hover{
+    color: black;
 }
 
 .bag{
@@ -227,6 +232,9 @@ product-image{
     background-size: contain;
     background-repeat: no-repeat;
 }
+product-image:hover{
+    filter: brightness(1.3) contrast(.9);
+}
 
 product-row{
     flex-direction: row;
@@ -272,6 +280,9 @@ view-all{
     font-size: 14px;
     text-transform: uppercase;
 }
+view-all:hover{
+    background-color: #436076;
+}
 
 /* === Category === */
 shop-by-style{
@@ -299,6 +310,9 @@ category-image{
     background-repeat: no-repeat;
     filter: blur(1px) brightness(0.8) contrast(.7);
 }
+category-image:hover{
+    filter: blur(1px) brightness(1) contrast(.9);
+}
 
 category-text{
     position: absolute;
@@ -308,7 +322,8 @@ category-text{
     top: 50%;
     left: 50%;
     color: white;
-    text-shadow: 0 0 4px rgba(0,0,0,0.4)
+    text-shadow: 0 0 4px rgba(0,0,0,0.4);
+    pointer-events: none;
 }
 
 @media (max-width: 768px){
