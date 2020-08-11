@@ -205,8 +205,8 @@ product-image{
 
 product{
     overflow: hidden;
-    flex: 0 0 20%;
-    margin: 0 2.5% 5%;
+    flex: 0 0 15%;
+    margin: 0 5% 5%;
 }
 
 product-image{
@@ -228,14 +228,19 @@ product-row{
     center-wrapper{
         max-width: 480px;
     }
+    product{
+        flex: 0 0 40%;
+        margin: 0 5% 5%;
+    }
 }
 
 @media (max-width: 425px){
     center-wrapper{
-        max-width: 425px;
+        max-width: 300px;
     }
     product{
-        flex: 0 0 95%;
+        flex: 0 0 80%;
+        margin: 0 10% 5%;
     }
 }
 
@@ -268,7 +273,9 @@ shop-by-style product-row:last-child{
 }
 
 category{
-    flex: 1;
+    overflow: hidden;
+    flex: 0 0 25%;
+    margin: 0 4% 5%;
     position: relative;
 }
 
@@ -290,6 +297,20 @@ category-text{
     left: 50%;
     color: white;
     text-shadow: 0 0 4px rgba(0,0,0,0.4)
+}
+
+@media (max-width: 768px){
+    category{
+        flex: 0 0 40%;
+        margin: 0 5% 5%;
+    }
+}
+
+@media (max-width: 425px){
+    category{
+        flex: 0 0 90%;
+        margin: 0 5% 5%;
+    }
 }
 
 /* === Instagram === */
