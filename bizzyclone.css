@@ -93,15 +93,17 @@ nav li{
 
 nav-text:hover{
     text-decoration: underline;
+    color: black;
 }
 
 dropdown-icon{
     margin-left: 8px;
     font-size: 12px;
+    opacity: 0.5;
 }
 
-ion-icon:hover{
-    color: red;
+nav li:hover dropdown-icon{
+    opacity: 1;
 }
 
 controls{
@@ -160,7 +162,8 @@ hero{
     align-items: center;
     text-align: center;
     background-image: url("http://placekitten.com/1920/600");
-    background-size: 100% 100%;
+    background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -198,12 +201,17 @@ cta:hover{
 }
 
 /* === Product === */
+content{
+    flex-direction: row;
+}
+
 center-wrapper{
-    align-self: center;
-    width: 1200px;
+    flex: 0 1 1200px;
+    margin: 0 auto;
 }
 
 summer-collection{
+    align-items: stretch;
     margin-top: 110px;
 
 }
@@ -241,13 +249,18 @@ product-row{
     flex-wrap: wrap;
     align-content: center;
     justify-items: center;
+    align-items: stretch;
     justify-content: center;
     overflow: hidden;
 }
 
+summer-collection product-row{
+    margin: 0 -5%;
+}
+
 @media (max-width: 768px){
     center-wrapper{
-        width: 480px;
+        max-width: 480px;
     }
     product{
         flex: 0 0 40%;
@@ -257,7 +270,7 @@ product-row{
 
 @media (max-width: 425px){
     center-wrapper{
-        width: 300px;
+        max-width: 300px;
     }
     product{
         flex: 0 0 80%;
@@ -290,6 +303,10 @@ shop-by-style{
     margin-bottom: 55px;
     justify-content: space-between;
     align-items: space-between;
+}
+
+shop-by-style product-row{
+    margin: 0 -4%;
 }
 
 shop-by-style product-row:last-child{
@@ -346,14 +363,39 @@ insta-feed{
     margin-bottom: 55px;
 }
 
-.insta-example{
-    flex: 0 0 24.5%;
-    flex-wrap: wrap;
-    margin: 0 .25% 1%;
-
+insta-feed product-row{
+    margin: 0 -.25%;
 }
-.insta-example:hover{
+
+instagram{
+    position: relative;
+    flex: 0 0 24.5%;
+    margin: 0 .25% 1%;
+    justify-content: center;
+    align-items: center;
+}
+
+insta-image{
+    width: 100%;
+    padding-top: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: filter .1s ease-in;
+}
+
+.insta-logo{
+    display: none;
+    position: absolute;
+    font-size: 32px;
+    color: white;
+}
+
+instagram:hover insta-image{
     filter: brightness(0.5);
+}
+
+instagram:hover .insta-logo{
+    display: flex;
 }
 
 @media (max-width: 768px){
@@ -374,13 +416,18 @@ insta-feed{
 lower-wrapper{
     background: #f5f5f5;
 }
+
+.lower-content{
+    justify-content: center;
+}
+
 footer{
+    flex: 0 1 1200px;
     overflow: hidden;
-    flex: 1;
     flex-direction: row;
     align-self: center;
-    max-width: 1200px;
     padding-top: 45px;
+    padding-bottom: 45px;
 }
 footer-column{
     flex: 1;
