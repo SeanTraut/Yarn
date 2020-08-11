@@ -99,17 +99,23 @@ dropdown-icon{
     margin-left: 8px;
     font-size: 12px;
 }
+ion-icon:hover{
+    color: red;
+}
 
 controls{
     flex-direction: row;
     font-size: 22px;
 }
+
 controls ion-icon{
     margin-left: 20px;
 }
+
 .bag{
     position: relative;
 }
+
 .bag:after{
     content: '';
     position: absolute;
@@ -170,6 +176,7 @@ hero{
     font-weight: 400;
     text-shadow: 0 0 4px rgba(0,0,0,0.4)
 }
+
 cta{
     margin-top: 20px;
     color: #354051;
@@ -178,6 +185,11 @@ cta{
     font-weight: 600;
     text-transform: uppercase;
     padding: 10px 18px;
+}
+
+cta:hover{
+    color: white;
+    background-color: #436076
 }
 
 /* === Product === */
