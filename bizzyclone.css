@@ -254,10 +254,6 @@ product-row{
     overflow: hidden;
 }
 
-summer-collection product-row{
-    margin: 0 -5%;
-}
-
 @media (max-width: 768px){
     center-wrapper{
         max-width: 480px;
@@ -305,12 +301,12 @@ shop-by-style{
     align-items: space-between;
 }
 
-shop-by-style product-row{
-    margin: 0 -4%;
-}
-
 shop-by-style product-row:last-child{
     margin-bottom: 0;
+}
+
+shop-by-style product-row{
+    padding: 0 1%;
 }
 
 category{
@@ -360,6 +356,7 @@ category-text{
 
 /* === Instagram === */
 insta-feed{
+    padding: 0 5%;
     margin-bottom: 55px;
 }
 
@@ -447,6 +444,7 @@ column-text{
 
 .blurb{
     padding: 0 45px;
+    max-width: 90ch;
 }
 
 .newsletter{
@@ -487,9 +485,9 @@ footer input{
     border-radius: 20px;
 }
 
-@media (max-width: 425px){
+@media (max-width: 768px){
     footer{
-        flex: 0 1 50%;
+        flex: 0 1 480px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -509,9 +507,9 @@ footer input{
     }
 }
 
-@media (max-width: 768px){
+@media (max-width: 425px){
     footer{
-        flex: 0 1 50%;
+        flex: 0 1 300px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -529,4 +527,19 @@ footer input{
         padding: 0;
         align-items: center;
     }
+}
+
+/* === Grow Image === */
+
+image-display{
+    display: block;
+    z-index: 9;
+    width: 100px;
+    height: 100px;
+}
+
+grow-image{
+    flex: 1;
+    z-index: 10;
+    background-size: cover;
 }
