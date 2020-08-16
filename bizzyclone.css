@@ -533,8 +533,7 @@ footer input{
 
 image-display{
     display: none;
-    position: -webkit-sticky;
-    position: absolute;
+    position: fixed;
     z-index: 9;
     top: 0;
     right: 0;
@@ -548,7 +547,7 @@ image-display{
 }
 
 grow-image{
-    position: sticky;
+    position: relative;
     z-index: 10;
     width: 50%;
     padding-top: 50%;
