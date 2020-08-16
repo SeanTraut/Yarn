@@ -532,14 +532,26 @@ footer input{
 /* === Grow Image === */
 
 image-display{
-    display: block;
+    display: none;
+    position: -webkit-sticky;
+    position: absolute;
     z-index: 9;
-    width: 100px;
-    height: 100px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+    background: rgba(0, 0, 0, .7);
+    transition: backdrop-filter .1s ease, background .1s ease;
 }
 
 grow-image{
-    flex: 1;
+    position: sticky;
     z-index: 10;
-    background-size: cover;
+    width: 50%;
+    padding-top: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
