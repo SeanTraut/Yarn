@@ -552,6 +552,7 @@ grow-image{
     z-index: 10;
     width: 50%;
     padding-top: 50%;
+    background-image: url('http://placekitten.com/180/180');
     background-size: contain;
     background-repeat: no-repeat;
 }
