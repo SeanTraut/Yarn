@@ -6,6 +6,8 @@ for(let image of selected_images){
     image.onclick = expand_image;
 };
 
+image_display.onclick = shrink_image;
+
 function expand_image(event){
     let image = event.currentTarget;
     let source = `url('${image.getAttribute('source')}')`;
@@ -15,3 +17,7 @@ function expand_image(event){
     image_display.style.display = "flex";
     grow_image.style.backgroundImage = source;
 };
+
+function shrink_image(event){
+    image_display.style.display = "none";
+}
