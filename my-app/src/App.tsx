@@ -12,28 +12,60 @@ declare global{
   }
 }
 
+interface Colors{
+  name: string,
+  product: Product[]
+}
+
+interface Cart{
+  itemCount: number,
+  total: number,
+  products: Product[]
+}
+
+interface User{
+  email: string,
+  password: string, /* lol */
+  wishlist: Product[],
+}
+
 interface Product{
   title: string,
-  price: string,
-  source: string
+  price: number,
+  source: string,
+  color?: Colors[],
+  category?: string,
+  featured?: boolean,
+  instock?: boolean,
+  reviewCount?: number,
+  reviewAverage?: number,
+  review?: Review[]
+}
+
+interface Review{
+  rating: number,
+  title: string,
+  body: string
 }
 
 interface Category{
   title: string,
-  source: string
-  product: Product[]  
+  source: string,
+  product: Product[],
+  style: string 
 }
 
 let myProduct:Product = {
   title: "Magic",
-  price: "15.00",
+  price: 15.00,
   source: "asdf"
 }
 
 let myCategory:Category = {
   title: "Category",
   source: "asd",
-  product: [myProduct, {title: "drinking-water", price: "arm-n-leg", source: "mother-earth"}]
+  style: "sample",
+  product: [myProduct, {title: "drinking-water", price: 9999, source: "mother-earth"}]
 }
 
 /* === Functions === */
@@ -44,42 +76,42 @@ function App() {
     {
       source: "http://placekitten.com/900/900",
       title: "Neon Pink",
-      price: "15.00",
+      price: 15.00,
     },
     {
       source: "http://placekitten.com/901/901",
       title: "Leaf Scarf Tie",
-      price: "15.00",
+      price: 15.00,
     },
     {
       source: "http://placekitten.com/902/902",
       title: "Fuschia Scarf Tie",
-      price: "15.00",
+      price: 15.00,
     },
     {
       source: "http://placekitten.com/903/903",
       title: "Turquoise Scarf Tie",
-      price: "15.00",
+      price: 15.00,
     },
     {
       source: "http://placekitten.com/904/904",
       title: "Retro Dot Scarf Tie",
-      price: "15.00",
+      price: 15.00,
     },
     {
       source: "http://placekitten.com/905/905",
       title: "Ikat Scarf Tie",
-      price: "15.00",
+      price: 15.00,
     },
     {
       source: "http://placekitten.com/906/906",
       title: "Kelly Green",
-      price: "15.00",
+      price: 15.00,
     },
     {
       source: "http://placekitten.com/907/907",
       title: "Peach",
-      price: "15.00",
+      price: 15.00,
     },  
   ];
 
