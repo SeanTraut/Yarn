@@ -12,11 +12,6 @@ declare global{
   }
 }
 
-interface Colors{
-  name: string,
-  product: Product[]
-}
-
 interface Cart{
   itemCount: number,
   total: number,
@@ -27,14 +22,14 @@ interface User{
   email: string,
   password: string, /* lol */
   wishlist: Product[],
+  review: Review[]
 }
 
 interface Product{
   title: string,
   price: number,
   source: string,
-  color?: Colors[],
-  category?: string,
+  category: Category[],
   featured?: boolean,
   instock?: boolean,
   reviewCount?: number,
@@ -44,84 +39,82 @@ interface Product{
 
 interface Review{
   rating: number,
+  date: Date
   title: string,
   body: string
+  user: User
 }
 
 interface Category{
+  type: string,
   title: string,
   source: string,
   product: Product[],
-  style: string 
 }
 
 let myProduct:Product = {
   title: "Magic",
   price: 15.00,
-  source: "asdf"
+  source: "asdf",
+  category: []
 }
 
 let myCategory:Category = {
   title: "Category",
-  source: "asd",
-  style: "sample",
-  product: [myProduct, {title: "drinking-water", price: 9999, source: "mother-earth"}]
+  type: "Collection",
+  source: "Source",
+  product: [myProduct, {title: "drinking-water", price: 9999, source: "mother-earth", category: []}]
 }
+
+let products:Product[] = [
+  /*make_product("Neon Pink", 15.00, "http://placekitten.com/900/900"),
+  
+{
+  source: "http://placekitten.com/901/901",
+  title: "Leaf Scarf Tie",
+  price: 15.00,
+},
+{
+  source: "http://placekitten.com/902/902",
+  title: "Fuschia Scarf Tie",
+  price: 15.00,
+},
+{
+  source: "http://placekitten.com/903/903",
+  title: "Turquoise Scarf Tie",
+  price: 15.00,
+},
+{
+  source: "http://placekitten.com/904/904",
+  title: "Retro Dot Scarf Tie",
+  price: 15.00,
+},
+{
+  source: "http://placekitten.com/905/905",
+  title: "Ikat Scarf Tie",
+  price: 15.00,
+},
+{
+  source: "http://placekitten.com/906/906",
+  title: "Kelly Green",
+  price: 15.00,
+},
+{
+  source: "http://placekitten.com/907/907",
+  title: "Peach",
+  price: 15.00,
+},  */
+];
 
 /* === Functions === */
 
 function App() {
-
-  let products:Product[] = [
-    {
-      source: "http://placekitten.com/900/900",
-      title: "Neon Pink",
-      price: 15.00,
-    },
-    {
-      source: "http://placekitten.com/901/901",
-      title: "Leaf Scarf Tie",
-      price: 15.00,
-    },
-    {
-      source: "http://placekitten.com/902/902",
-      title: "Fuschia Scarf Tie",
-      price: 15.00,
-    },
-    {
-      source: "http://placekitten.com/903/903",
-      title: "Turquoise Scarf Tie",
-      price: 15.00,
-    },
-    {
-      source: "http://placekitten.com/904/904",
-      title: "Retro Dot Scarf Tie",
-      price: 15.00,
-    },
-    {
-      source: "http://placekitten.com/905/905",
-      title: "Ikat Scarf Tie",
-      price: 15.00,
-    },
-    {
-      source: "http://placekitten.com/906/906",
-      title: "Kelly Green",
-      price: 15.00,
-    },
-    {
-      source: "http://placekitten.com/907/907",
-      title: "Peach",
-      price: 15.00,
-    },  
-  ];
 
   let product_elements = [];
   
   for(let product of products){
     product_elements.push(<Product {...product} />);
   }
-
-  console.log(product_elements);
 
   return (
     <div className="App">
@@ -138,6 +131,7 @@ function App() {
               />
               <Product {...products[1]}
               />*/}
+
               {product_elements}
             </product-row>
           </summer-collection>
@@ -148,7 +142,7 @@ function App() {
 };
 
 
-function Product(props){
+function Product(props:Product){
   let source = props.source || "http://placekitten.com/900/900";
 
   return(
@@ -161,6 +155,20 @@ function Product(props){
   );
 }
 
+/* === Constructors === */
+
+function make_product(title:string, price:number, source:string,
+  categories:Category[] = [], instock?:boolean, featured?:boolean):Product{
+  
+  let product:Product = {title, price, source, category: categories, featured, instock};
+  
+  for(let category of categories){
+      category.product.push(product);
+  }
+
+  products.push(product);
+  return product;
+}
 
 
 export default App;
