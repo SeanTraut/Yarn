@@ -1,23 +1,27 @@
-let selected_images = document.querySelectorAll(".image");
-let image_display = document.querySelector("image-display");
-let grow_image = document.querySelector("grow-image");
+(function(){
 
-for(let image of selected_images){
-    image.onclick = expand_image;
-};
+    let selected_images = document.querySelectorAll(".image");
+    let image_display = document.querySelector("image-display");
+    let grow_image = document.querySelector("grow-image");
 
-image_display.onclick = shrink_image;
+    for(let image of selected_images){
+        image.onclick = expand_image;
+    };
 
-function expand_image(event){
-    let image = event.currentTarget;
-    let source = `url('${image.getAttribute('source')}')`;
+    image_display.onclick = shrink_image;
+
+    function expand_image(event){
+        let image = event.currentTarget;
+        let source = `url('${image.getAttribute('source')}')`;
+        
+        console.log(image_display, image, source);
+
+        image_display.style.display = "flex";
+        grow_image.style.backgroundImage = source;
+    };
+
+    function shrink_image(event){
+        image_display.style.display = "none";
+    };
     
-    console.log(image_display, image, source);
-
-    image_display.style.display = "flex";
-    grow_image.style.backgroundImage = source;
-};
-
-function shrink_image(event){
-    image_display.style.display = "none";
-}
+})();
