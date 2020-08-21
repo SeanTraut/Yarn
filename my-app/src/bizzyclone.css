@@ -319,7 +319,6 @@ category{
 category-image{
     width: 100%;
     padding-top: 100%;
-    background-image: url("http://placekitten.com/185/185");
     background-size: contain;
     background-repeat: no-repeat;
     filter: blur(1px) brightness(0.8) contrast(.7);

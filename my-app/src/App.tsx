@@ -67,52 +67,21 @@ let myCategory:Category = {
 }
 
 let products:Product[] = [];
-  
-/*
-{
-  source: "http://placekitten.com/901/901",
-  title: "Leaf Scarf Tie",
-  price: 15.00,
-},
-{
-  source: "http://placekitten.com/902/902",
-  title: "Fuschia Scarf Tie",
-  price: 15.00,
-},
-{
-  source: "http://placekitten.com/903/903",
-  title: "Turquoise Scarf Tie",
-  price: 15.00,
-},
-{
-  source: "http://placekitten.com/904/904",
-  title: "Retro Dot Scarf Tie",
-  price: 15.00,
-},
-{
-  source: "http://placekitten.com/905/905",
-  title: "Ikat Scarf Tie",
-  price: 15.00,
-},
-{
-  source: "http://placekitten.com/906/906",
-  title: "Kelly Green",
-  price: 15.00,
-},
-{
-  source: "http://placekitten.com/907/907",
-  title: "Peach",
-  price: 15.00,
-}*/
+let categories:Category[] = [];
 
 /* === Functions === */
 
 function App() {
 
   let product_elements = [];
-  
+  let category_elements = [];
+
   for(let product of products){
     product_elements.push(<Product {...product} />);
+  }
+
+  for(let category of categories){
+    category_elements.push(<Category {...category} />);
   }
 
   return (
@@ -122,24 +91,22 @@ function App() {
           <summer-collection>
             <section-title>Summer Collection</section-title>
             <product-row>
-              
-              {/*<Product
-                source = "http://placekitten.com/930/930"
-                title = "Cute Cat"
-                price = "20.00"
-              />
-              <Product {...products[1]}
-              />*/}
-
               {product_elements}
             </product-row>
           </summer-collection>
+          <shop-by-style>
+                    <section-title>Shop by Style</section-title>
+                    <product-row>
+                      {category_elements}
+                    </product-row>
+                </shop-by-style>
         </center-wrapper>
       </content>
     </div>
   );
 };
 
+/* === JSX === */
 
 function Product(props:Product){
   let source = props.source || "http://placekitten.com/900/900";
@@ -151,6 +118,17 @@ function Product(props:Product){
     <product-price>${props.price || "15.00"}</product-price>
     <ion-icon name="heart-half" class = "favorite-heart"></ion-icon>
   </product>
+  );
+}
+
+function Category(props:Category){
+  let source = props.source || "http://placekitten.com/890/890";
+  
+  return(
+  <category>
+    <category-image source = {source} style = {{backgroundImage: `url(${source})`}} class = "image"></category-image>
+    <category-text>{props.title || "Category Text"}</category-text>
+  </category>
   );
 }
 
@@ -177,19 +155,27 @@ function make_category(type:string, title:string, source:string, products:Produc
     product.category.push(category);
   }
 
-  //push to a list of categories when needed
+  categories.push(category);
   return category;
 }
 
-let neon_pink = make_product("Neon Pink", 15.00, "http://placekitten.com/900/900");
-let leaf_scarf_tie = make_product("Leaf Scarf Tie", 15.00, "http://placekitten.com/901/901");
-let fuschia_scarf_tie = make_product("Fuschia Scarf Tie", 15.00, "http://placekitten.com/902/902");
-let turquoise_scarf_tie = make_product("Turquoise Scarf Tie", 15.00, "http://placekitten.com/903/903");
-let retro_dot_scarf_tie = make_product("Retro Dot Scarf Tie", 15.00, "http://placekitten.com/904/904");
-let ikat_scarf_tie = make_product("Ikat Scarf Tie", 15.00, "http://placekitten.com/905/905");
-let kelly_greem = make_product("Kelly Green", 15.00, "http://placekitten.com/906/906");
-let peach = make_product("Peach", 15.00, "http://placekitten.com/907/907");
+//products
+let neon_pink:Product = make_product("Neon Pink", 15.00, "http://placekitten.com/900/900");
+let leaf_scarf_tie:Product = make_product("Leaf Scarf Tie", 15.00, "http://placekitten.com/901/901");
+let fuschia_scarf_tie:Product = make_product("Fuschia Scarf Tie", 15.00, "http://placekitten.com/902/902");
+let turquoise_scarf_tie:Product = make_product("Turquoise Scarf Tie", 15.00, "http://placekitten.com/903/903");
+let retro_dot_scarf_tie:Product = make_product("Retro Dot Scarf Tie", 15.00, "http://placekitten.com/904/904");
+let ikat_scarf_tie:Product = make_product("Ikat Scarf Tie", 15.00, "http://placekitten.com/905/905");
+let kelly_green:Product = make_product("Kelly Green", 15.00, "http://placekitten.com/906/906");
+let peach:Product = make_product("Peach", 15.00, "http://placekitten.com/907/907");
 
-console.log(make_category("Scarf Tie", "Scarf Tie", "url", [leaf_scarf_tie, fuschia_scarf_tie, turquoise_scarf_tie, retro_dot_scarf_tie, ikat_scarf_tie]));
+//categories
+let twist_headbands:Category = make_category("Style", "Twist Headbands", "http://placekitten.com/800/800");
+let tie_headbands:Category = make_category("Style", "Tie Headbands", "http://placekitten.com/801/801");
+let wide_tie_headbands:Category = make_category("Style", "Wide Tie Headbands", "http://placekitten.com/802/802");
+let wrap_headbands:Category = make_category("Style", "Wrap Headbands", "http://placekitten.com/803/803");
+let wide_wrap_headbands:Category = make_category("Style", "Wide Wrap Headbands", "http://placekitten.com/804/804");
+let scarf_ties:Category = make_category("Style", "Scarf Ties", "http://placekitten.com/805/805", [leaf_scarf_tie, fuschia_scarf_tie, turquoise_scarf_tie, retro_dot_scarf_tie, ikat_scarf_tie]);
+
 
 export default App;
