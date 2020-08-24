@@ -149,14 +149,62 @@ function Product(props:Product){
 
 function Category(props:Category){
   let source = props.source || "http://placekitten.com/890/890";
-  
-  console.log(props);
 
   return(
   <category>
     <category-image source = {source} style = {{backgroundImage: `url(${source})`}} class = "image"></category-image>
     <category-text>{props.title || "Category Text"}</category-text>
   </category>
+  );
+}
+
+function Gallery(props:JSX.Element[]){
+  return(<summer-collection>
+    <section-title>Summer Collection</section-title>
+      <product-row>
+        {props}
+      </product-row>
+    </summer-collection>
+  );
+}
+
+function Instagram(){
+  return(
+    <instagram>
+      <insta-image source = "http://placekitten.com/901/901" style = {{backgroundImage: `url('http://placekitten.com/901/901')`}} class = "image"></insta-image>
+      <ion-icon name="logo-instagram" class = "insta-logo"></ion-icon>
+    </instagram>
+  );
+}
+
+function Footer(){
+  return(
+    <lower-wrapper>
+      <content class = "lower-content">
+        <footer>
+            <footer-column class = "quick-links">
+                <column-header>Quick Links</column-header>
+                <column-text>Shop All Products</column-text>
+                <column-text>About</column-text>
+                <column-text>Search</column-text>
+                <column-text>Contact</column-text>
+                <column-text>FAQs</column-text>
+            </footer-column>
+            <footer-column class = "blurb">
+                <column-header>BizzyB's in the Wild</column-header>
+                <wild-blurb>Share your own pics and see how other customers are wearing their BizzyB products on Instagram using <br /> #BizzyBCustomerPhotos.</wild-blurb>
+            </footer-column>
+            <footer-column class = "newsletter">
+                <column-header>Newsletter</column-header>
+                <input className = "first-name-input" placeholder = "First Name"></input>
+                <input className = "last-name-input" placeholder = "Last Name"></input>
+                <input className = "email-address-input" placeholder = "Email Address"></input>
+                <button className = "subscribe">Subscribe</button>
+            </footer-column>
+            <spacer></spacer>
+        </footer>
+      </content>
+    </lower-wrapper>
   );
 }
 
@@ -176,6 +224,11 @@ function HomePage(props:any){
   return(
     <content class = "upper-content">
       <Header />
+      <hero class = "hero">
+        <h1 className = "page-title">Welcome to Bizzybcrafts</h1>
+        <h2 className = "page-subtitle">My goal is to make the busy woman feel put together with the addition of just one accessory.</h2>
+        <cta>Shop Summer Collection</cta>
+      </hero>
       <center-wrapper>
         <summer-collection>
           <section-title>Summer Collection</section-title>
@@ -190,6 +243,7 @@ function HomePage(props:any){
             </product-row>
         </shop-by-style>
       </center-wrapper>
+      <Footer />
     </content>
   );
 
@@ -203,7 +257,8 @@ function CategoryPage(props:CategoryPageProps){
 
   return(
     <div>
-      Hello World!
+      <Header />
+      <Category type = {category.type} title = {category.title} source = {category.source} product = {category.product} />
     </div>
   );
 }
@@ -245,7 +300,6 @@ function make_category(type:string, title:string, source:string, products:Produc
   let ikat_scarf_tie = make_product("Ikat Scarf Tie", 15.00, "http://placekitten.com/905/905");
   let kelly_green = make_product("Kelly Green", 15.00, "http://placekitten.com/906/906");
   let peach = make_product("Peach", 15.00, "http://placekitten.com/907/907");
-  let red = make_product("Red", 15.00, "http://dummyimage.com/300/ff0000/fff&text=red");
 
   let scarf_tie_products = [leaf_scarf_tie, fuschia_scarf_tie, turquoise_scarf_tie, retro_dot_scarf_tie, ikat_scarf_tie];
 
@@ -256,9 +310,8 @@ function make_category(type:string, title:string, source:string, products:Produc
   let wrap_headbands = make_category("Style", "Wrap Headbands", "http://placekitten.com/803/803");
   let wide_wrap_headbands = make_category("Style", "Wide Wrap Headbands", "http://placekitten.com/804/804");
   let scarf_ties = make_category("Style", "Scarf Ties", "http://placekitten.com/805/805", scarf_tie_products);
-  let shape_of_water = make_category("Movie", "Shape of Water", "http://dummyimage.com/300/000000/fff/&text=\xa0");
 
-  //open_category = scarf_ties;
+  open_category = scarf_ties;
 })()
 
 

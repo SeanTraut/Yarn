@@ -50,6 +50,10 @@ spacer{
 }
 
  /* === Header === */
+.upper-content{
+    flex-direction: column;
+}
+
 announcement-bar{
     background-color: #7745ae;
     min-height: 44px;
