@@ -104,14 +104,19 @@ function ProductHome(props:Product){
   );
 }
 
-function ProductSort(props:Product){
-  let source = props.source || "http://placekitten.com/900/900";
+interface ProductSortProps{
+  category: Category,
+  product: Product
+}
+
+function ProductSort(props:ProductSortProps){
+  let source = props.product.source || "http://placekitten.com/900/900";
 
   return(
   <product>
     <product-image source = {source} style = {{backgroundImage: `url(${source})`}} class = "image product-sort-image"></product-image>
-    <product-title>{props.title || "Neon Pink"} | Scarf</product-title>
-    <product-price>${props.price || "15.00"}</product-price>
+    <product-title>{props.product.title || "Neon Pink"} | {props.category.title}</product-title>
+    <product-price>${props.product.price || "15.00"}</product-price>
   </product>
   );
 }
@@ -343,6 +348,15 @@ for(let product of products){
 
 for(let category of categories){
   category_elements.push(<CategoryIcon {...category} />);
+}
+
+/* let PageProps:ProductSortProps = {
+  category: open_category
+  product: open.category
+} */
+
+for(let product of open_category.product){
+
 }
 
 export default App;
