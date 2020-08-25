@@ -223,11 +223,6 @@ section-title{
     font-size: 20px;
     text-transform: uppercase;
 }
-product-image{
-    display: block;
-    height: auto;
-    width: 100%;
-}
 
 product{
     overflow: hidden;
@@ -407,7 +402,7 @@ footer-column{
 }
 column-header{
     font-size: 17px;
-    font-family: Alfie, seif;
+    font-family: Alfie, serif;
     margin-bottom: 25px;
 }
 
@@ -530,4 +525,44 @@ grow-image{
     background-image: url('http://placekitten.com/180/180');
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+/* === Category Header === */
+size-wrapper{
+    flex: 0 0 1200px;
+    flex-direction: row;
+    padding: 0 55px;
+    justify-content: space-between;
+}
+
+.subheader-category{
+    border-top: 1px solid rgba( 0, 0, 0, .1);
+    border-bottom: 1px solid rgba( 0, 0, 0, .1);
+}
+
+subheader-title{
+    font-family: Alfie, sans-serif;
+    font-size: 35px;
+    text-align: center;
+    padding: 55px 0 44px;
+}
+
+sort{
+    flex-direction: row;
+    height: 55px;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba( 0, 0, 0, .1);
+    font-size: 13px;
+}
+
+filter-title{
+    margin-top: 5px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+filter-count{
+    font-style: italic;
+    font-size: 15px;
 }

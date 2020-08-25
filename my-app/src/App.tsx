@@ -91,7 +91,68 @@ function App() {
 
 /* === Components === */
 
-function Header(){
+function ProductHome(props:Product){
+  let source = props.source || "http://placekitten.com/900/900";
+
+  return(
+  <product>
+    <product-image source = {source} style = {{backgroundImage: `url(${source})`}} class = "image product-home-image"></product-image>
+    <product-title>{props.title || "Neon Pink"}</product-title>
+    <product-price>${props.price || "15.00"}</product-price>
+    <ion-icon name="heart-half" class = "favorite-heart"></ion-icon>
+  </product>
+  );
+}
+
+function ProductSort(props:Product){
+  let source = props.source || "http://placekitten.com/900/900";
+
+  return(
+  <product>
+    <product-image source = {source} style = {{backgroundImage: `url(${source})`}} class = "image product-sort-image"></product-image>
+    <product-title>{props.title || "Neon Pink"} | Scarf</product-title>
+    <product-price>${props.price || "15.00"}</product-price>
+  </product>
+  );
+}
+
+function CategoryIcon(props:Category){
+  let source = props.source || "http://placekitten.com/890/890";
+
+  return(
+  <category>
+    <category-image source = {source} style = {{backgroundImage: `url(${source})`}} class = "image"></category-image>
+    <category-text>{props.title || "Category Text"}</category-text>
+  </category>
+  );
+}
+
+interface Gallery{
+  children: JSX.Element|JSX.Element[],
+  title?: string
+}
+
+function Gallery(props:Gallery){
+  return(
+    <collection>
+      <section-title>{props.title}</section-title>
+      <product-row>
+        {props.children}
+      </product-row>
+    </collection>
+  );
+}
+
+function Instagram(){
+  return(
+    <instagram>
+      <insta-image source = "http://placekitten.com/901/901" style = {{backgroundImage: `url('http://placekitten.com/901/901')`}} class = "image"></insta-image>
+      <ion-icon name="logo-instagram" class = "insta-logo"></ion-icon>
+    </instagram>
+  );
+}
+
+function HeaderMain(){
   return(
     <header>
       <announcement-bar>
@@ -134,56 +195,24 @@ function Header(){
   );
 }
 
-function Product(props:Product){
-  let source = props.source || "http://placekitten.com/900/900";
-
+function HeaderCategory(props:Category){
   return(
-  <product>
-    <product-image source = {source} style = {{backgroundImage: `url(${source})`}} class = "image"></product-image>
-    <product-title>{props.title || "Neon Pink"}</product-title>
-    <product-price>${props.price || "15.00"}</product-price>
-    <ion-icon name="heart-half" class = "favorite-heart"></ion-icon>
-  </product>
+      <subheader className = "subheader-category">
+        <subheader-title className = "category-page-title">{props.title}</subheader-title>
+        <sort>
+          <size-wrapper className = "category-position">
+            <filter-select>
+              <filter-title>Sort By</filter-title>
+              {/*<select className = "filter-dropdown">Best Selling</select>*/}
+            </filter-select>
+            <filter-count>{props.product.length} products</filter-count>
+          </size-wrapper>
+        </sort>
+      </subheader>
   );
 }
 
-function Category(props:Category){
-  let source = props.source || "http://placekitten.com/890/890";
-
-  return(
-  <category>
-    <category-image source = {source} style = {{backgroundImage: `url(${source})`}} class = "image"></category-image>
-    <category-text>{props.title || "Category Text"}</category-text>
-  </category>
-  );
-}
-
-interface Gallery{
-  title: string,
-  children: JSX.Element|JSX.Element[],
-}
-
-function Gallery(props:Gallery){
-  return(
-    <collection>
-      <section-title>{props.title}</section-title>
-      <product-row>
-        {props.children}
-      </product-row>
-    </collection>
-  );
-}
-
-function Instagram(){
-  return(
-    <instagram>
-      <insta-image source = "http://placekitten.com/901/901" style = {{backgroundImage: `url('http://placekitten.com/901/901')`}} class = "image"></insta-image>
-      <ion-icon name="logo-instagram" class = "insta-logo"></ion-icon>
-    </instagram>
-  );
-}
-
-function Footer(){
+function FooterMain(){
   return(
     <content class = "lower-content">
       <footer>
@@ -215,7 +244,7 @@ function HomePage(props:any){
 
   return(
     <div className = "Home">
-      <Header />
+      <HeaderMain />
       <hero class = "hero">
         <h1 className = "page-title">Welcome to Bizzybcrafts</h1>
         <h2 className = "page-subtitle">My goal is to make the busy woman feel put together with the addition of just one accessory.</h2>
@@ -228,7 +257,7 @@ function HomePage(props:any){
           <Gallery title = "Insta Feed"><Instagram /><Instagram /><Instagram /><Instagram /></Gallery>
         </center-wrapper>
       </content>
-      <Footer />
+      <FooterMain />
     </div>
   );
 
@@ -242,10 +271,10 @@ function CategoryPage(props:CategoryPageProps){
   console.log(category.product);
   return(
     <div>
-      <Header />
-      <h1>{category.title}</h1>
-      <Category type = {category.type} title = {category.title} source = {category.source} product = {category.product} />
-      <Footer />
+      <HeaderMain />
+      <HeaderCategory {...category} />
+      <Gallery>{}</Gallery>
+      <FooterMain />
     </div>
   );
 }
@@ -300,19 +329,20 @@ function make_category(type:string, title:string, source:string, products:Produc
 
 
   
-  //open_category = scarf_ties;
+  open_category = scarf_ties;
 })()
 
   
 let product_elements:JSX.Element[] = [];
 let category_elements:JSX.Element[] = [];
+let open_category_elements:JSX.Element[] = [];
 
 for(let product of products){
-  product_elements.push(<Product {...product} />);
+  product_elements.push(<ProductHome {...product} />);
 }
 
 for(let category of categories){
-  category_elements.push(<Category {...category} />);
+  category_elements.push(<CategoryIcon {...category} />);
 }
 
 export default App;
