@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import './bizzyclone.css';
 
 /* === Types (Upper CamelCase) === */
@@ -69,6 +68,7 @@ let myCategory:Category = {
 let products:Product[] = [];
 let categories:Category[] = [];
 let open_category:Category|undefined;
+
 
 /* === Functions === */
 
@@ -158,13 +158,19 @@ function Category(props:Category){
   );
 }
 
-function Gallery(props:JSX.Element[]){
-  return(<summer-collection>
-    <section-title>Summer Collection</section-title>
+interface Gallery{
+  title: string,
+  children: JSX.Element|JSX.Element[],
+}
+
+function Gallery(props:Gallery){
+  return(
+    <collection>
+      <section-title>{props.title}</section-title>
       <product-row>
-        {props}
+        {props.children}
       </product-row>
-    </summer-collection>
+    </collection>
   );
 }
 
@@ -179,72 +185,51 @@ function Instagram(){
 
 function Footer(){
   return(
-    <lower-wrapper>
-      <content class = "lower-content">
-        <footer>
-            <footer-column class = "quick-links">
-                <column-header>Quick Links</column-header>
-                <column-text>Shop All Products</column-text>
-                <column-text>About</column-text>
-                <column-text>Search</column-text>
-                <column-text>Contact</column-text>
-                <column-text>FAQs</column-text>
-            </footer-column>
-            <footer-column class = "blurb">
-                <column-header>BizzyB's in the Wild</column-header>
-                <wild-blurb>Share your own pics and see how other customers are wearing their BizzyB products on Instagram using <br /> #BizzyBCustomerPhotos.</wild-blurb>
-            </footer-column>
-            <footer-column class = "newsletter">
-                <column-header>Newsletter</column-header>
-                <input className = "first-name-input" placeholder = "First Name"></input>
-                <input className = "last-name-input" placeholder = "Last Name"></input>
-                <input className = "email-address-input" placeholder = "Email Address"></input>
-                <button className = "subscribe">Subscribe</button>
-            </footer-column>
-            <spacer></spacer>
-        </footer>
-      </content>
-    </lower-wrapper>
+    <content class = "lower-content">
+      <footer>
+          <footer-column class = "quick-links">
+              <column-header>Quick Links</column-header>
+              <column-text>Shop All Products</column-text>
+              <column-text>About</column-text>
+              <column-text>Search</column-text>
+              <column-text>Contact</column-text>
+              <column-text>FAQs</column-text>
+          </footer-column>
+          <footer-column class = "blurb">
+              <column-header>BizzyB's in the Wild</column-header>
+              <wild-blurb>Share your own pics and see how other customers are wearing their BizzyB products on Instagram using <br /> #BizzyBCustomerPhotos.</wild-blurb>
+          </footer-column>
+          <footer-column class = "newsletter">
+              <column-header>Newsletter</column-header>
+              <input className = "first-name-input" placeholder = "First Name"></input>
+              <input className = "last-name-input" placeholder = "Last Name"></input>
+              <input className = "email-address-input" placeholder = "Email Address"></input>
+              <button className = "subscribe">Subscribe</button>
+          </footer-column>
+      </footer>
+    </content>
   );
 }
 
 function HomePage(props:any){
-  
-  let product_elements:JSX.Element[] = [];
-  let category_elements:JSX.Element[] = [];
-
-  for(let product of products){
-    product_elements.push(<Product {...product} />);
-  }
-
-  for(let category of categories){
-    category_elements.push(<Category {...category} />);
-  }
 
   return(
-    <content class = "upper-content">
+    <div className = "Home">
       <Header />
       <hero class = "hero">
         <h1 className = "page-title">Welcome to Bizzybcrafts</h1>
         <h2 className = "page-subtitle">My goal is to make the busy woman feel put together with the addition of just one accessory.</h2>
         <cta>Shop Summer Collection</cta>
       </hero>
-      <center-wrapper>
-        <summer-collection>
-          <section-title>Summer Collection</section-title>
-          <product-row>
-            {product_elements}
-          </product-row>
-        </summer-collection>
-        <shop-by-style>
-          <section-title>Shop by Style</section-title>
-            <product-row>
-              {category_elements}
-            </product-row>
-        </shop-by-style>
-      </center-wrapper>
+      <content class = "upper-content">
+        <center-wrapper>
+          <Gallery title = "Summer Collection">{product_elements}</Gallery>
+          <Gallery title = "Shop by Style">{category_elements}</Gallery>
+          <Gallery title = "Insta Feed"><Instagram /><Instagram /><Instagram /><Instagram /></Gallery>
+        </center-wrapper>
+      </content>
       <Footer />
-    </content>
+    </div>
   );
 
 }
@@ -254,11 +239,13 @@ interface CategoryPageProps{
 
 function CategoryPage(props:CategoryPageProps){
   let category = props.category;
-
+  console.log(category.product);
   return(
     <div>
       <Header />
+      <h1>{category.title}</h1>
       <Category type = {category.type} title = {category.title} source = {category.source} product = {category.product} />
+      <Footer />
     </div>
   );
 }
@@ -311,8 +298,21 @@ function make_category(type:string, title:string, source:string, products:Produc
   let wide_wrap_headbands = make_category("Style", "Wide Wrap Headbands", "http://placekitten.com/804/804");
   let scarf_ties = make_category("Style", "Scarf Ties", "http://placekitten.com/805/805", scarf_tie_products);
 
-  open_category = scarf_ties;
+
+  
+  //open_category = scarf_ties;
 })()
 
+  
+let product_elements:JSX.Element[] = [];
+let category_elements:JSX.Element[] = [];
+
+for(let product of products){
+  product_elements.push(<Product {...product} />);
+}
+
+for(let category of categories){
+  category_elements.push(<Category {...category} />);
+}
 
 export default App;
