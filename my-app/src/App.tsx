@@ -122,6 +122,7 @@ function ProductSort(props:ProductSortProps){
       <ion-icon name="star" />
       <ion-icon name="star" />
       <ion-icon name="star" />
+      <review-count>{props.product.reviewCount /*"reviews"*/ || "100 reviews" }</review-count>
     </review-stars>
     <product-price>${props.product.price || "Sold Out"}</product-price>
   </product>
