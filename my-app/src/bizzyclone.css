@@ -581,3 +581,24 @@ filter-count{
     font-style: italic;
     font-size: 15px;
 }
+
+/* === Dropdown Styling === */
+test-wrapper{
+    flex: 0;
+    flex-direction: row;
+}
+
+.dropdown-select{
+    flex: 0 0 120px;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    font-family: Abel, sans-serif;
+    font-size: 16px;
+    border: none;
+}
+.dropdown-option{
+    flex: 0 0 120px;
+    overflow: hidden;
+    text-align: center;
+}

@@ -144,7 +144,7 @@ function Dropdown(props:DropdownProps[]){
   }
 
   return(
-    <select name = "sort_by" id = "sort_by">
+    <select name = "sort_by" id = "sort_by" className = "dropdown-select">
       {option_elements}
     </select>
   );
