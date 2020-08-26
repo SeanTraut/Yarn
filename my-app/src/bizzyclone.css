@@ -230,6 +230,16 @@ product{
     margin: 0 5% 5%;
 }
 
+product-title{
+    font-size: 17px;
+    font-family: Alfie, serif;
+}
+
+review-stars{
+    flex-direction: row;
+    color: #3d4246;
+}
+
 product-image{
     width: 100%;
     padding-top: 100%;
@@ -440,6 +450,7 @@ button.subscribe{
 input:first-of-type{
     margin-top: 0;
 }
+
 footer input{
     color: rgb(121, 121, 121);
     outline-color: black;;
@@ -529,7 +540,7 @@ grow-image{
 
 /* === Category Header === */
 size-wrapper{
-    flex: 0 0 1200px;
+    flex: 0 1 1200px;
     flex-direction: row;
     padding: 0 55px;
     justify-content: space-between;
@@ -556,8 +567,12 @@ sort{
     font-size: 13px;
 }
 
+filter-select{
+    flex-direction: row;
+}
+
 filter-title{
-    margin-top: 5px;
+    margin-right: 10px;
     font-size: 12px;
     text-transform: uppercase;
 }

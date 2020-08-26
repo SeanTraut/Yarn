@@ -115,11 +115,54 @@ function ProductSort(props:ProductSortProps){
   return(
   <product>
     <product-image source = {source} style = {{backgroundImage: `url(${source})`}} class = "image product-sort-image"></product-image>
-    <product-title>{props.product.title || "Neon Pink"} | {props.category.title}</product-title>
-    <product-price>${props.product.price || "15.00"}</product-price>
+    <product-title className = "product-sort-title">{props.product.title || "Neon Pink"} | {props.category.title}</product-title>
+    <review-stars>
+      <ion-icon name="star" />
+      <ion-icon name="star" />
+      <ion-icon name="star" />
+      <ion-icon name="star" />
+      <ion-icon name="star" />
+    </review-stars>
+    <product-price>${props.product.price || "Sold Out"}</product-price>
   </product>
   );
 }
+
+interface DropdownProps{
+  value: string,
+  text: string,
+  selected: boolean
+}
+
+function Dropdown(props:DropdownProps[]){
+  let option_elements:JSX.Element[] = [];
+
+  for(let i of props){
+    option_elements.push(<option value = {i.value} selected = {i.selected} className = "dropdown-option">{i.text}</option>);
+  }
+
+  return(
+    <select name = "sort_by" id = "sort_by">
+      {option_elements}
+    </select>
+  );
+}
+
+/* HARDCODED
+function Dropdown(props:DropdownProps){
+  return(
+    <select name = "sort_by" id = "sort_by">
+      <option value = "featured">Featured</option>
+      <option value = "best-selling">Best selling</option>
+      <option value = "title-ascending">Alphabetically, A-Z</option>
+      <option value = "title-descending">Alphabetically, Z-A</option>
+      <option value = "price-ascending">Price, low to high</option>
+      <option value = "price-descending">Price, high to low</option>
+      <option value = "created-ascending">Date, old to new</option>
+      <option value = "created-descending">Date, new to old</option>
+    </select>
+  );
+}*/
 
 function CategoryIcon(props:Category){
   let source = props.source || "http://placekitten.com/890/890";
@@ -201,6 +244,8 @@ function HeaderMain(){
 }
 
 function HeaderCategory(props:Category){
+  let category_sort:DropdownProps[] = [{ value: "featured"}, {value: "best-selling"}];
+
   return(
       <subheader className = "subheader-category">
         <subheader-title className = "category-page-title">{props.title}</subheader-title>
@@ -208,7 +253,7 @@ function HeaderCategory(props:Category){
           <size-wrapper className = "category-position">
             <filter-select>
               <filter-title>Sort By</filter-title>
-              {/*<select className = "filter-dropdown">Best Selling</select>*/}
+              <Dropdown />
             </filter-select>
             <filter-count>{props.product.length} products</filter-count>
           </size-wrapper>
@@ -273,12 +318,23 @@ interface CategoryPageProps{
 
 function CategoryPage(props:CategoryPageProps){
   let category = props.category;
+  let product_sort_elements:JSX.Element[] = [];
+
+  for(let product of category.product){
+    product_sort_elements.push(<ProductSort product = {product} category = {category} />);
+  }
+
   console.log(category.product);
+
   return(
     <div>
       <HeaderMain />
       <HeaderCategory {...category} />
-      <Gallery>{}</Gallery>
+      <content class = "upper-content">
+        <center-wrapper>
+          <Gallery>{product_sort_elements}</Gallery>
+        </center-wrapper>
+      </content>
       <FooterMain />
     </div>
   );
@@ -321,8 +377,9 @@ function make_category(type:string, title:string, source:string, products:Produc
   let ikat_scarf_tie = make_product("Ikat Scarf Tie", 15.00, "http://placekitten.com/905/905");
   let kelly_green = make_product("Kelly Green", 15.00, "http://placekitten.com/906/906");
   let peach = make_product("Peach", 15.00, "http://placekitten.com/907/907");
+  let red = make_product("Red", 15.00, "https://dummyimage.com/900/FF0000/fff.jpg&text=Red");
 
-  let scarf_tie_products = [leaf_scarf_tie, fuschia_scarf_tie, turquoise_scarf_tie, retro_dot_scarf_tie, ikat_scarf_tie];
+  let scarf_tie_products = [leaf_scarf_tie, fuschia_scarf_tie, turquoise_scarf_tie, retro_dot_scarf_tie, ikat_scarf_tie, red, red, red];
 
   //categories
   let twist_headbands = make_category("Style", "Twist Headbands", "http://placekitten.com/800/800");
@@ -340,7 +397,6 @@ function make_category(type:string, title:string, source:string, products:Produc
   
 let product_elements:JSX.Element[] = [];
 let category_elements:JSX.Element[] = [];
-let open_category_elements:JSX.Element[] = [];
 
 for(let product of products){
   product_elements.push(<ProductHome {...product} />);
@@ -348,15 +404,6 @@ for(let product of products){
 
 for(let category of categories){
   category_elements.push(<CategoryIcon {...category} />);
-}
-
-/* let PageProps:ProductSortProps = {
-  category: open_category
-  product: open.category
-} */
-
-for(let product of open_category.product){
-
 }
 
 export default App;
