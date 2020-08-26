@@ -135,10 +135,11 @@ interface DropdownProps{
 }
 
 function Dropdown(props:DropdownProps[]){
+  let inputs:DropdownProps[] = props;
   let option_elements:JSX.Element[] = [];
 
-  for(let i of props){
-    option_elements.push(<option value = {i.value} selected = {i.selected} className = "dropdown-option">{i.text}</option>);
+  for(let index of inputs){
+    option_elements.push(<option value = {index.value} selected = {index.selected} className = "dropdown-option">{index.text}</option>);
   }
 
   return(
@@ -244,7 +245,16 @@ function HeaderMain(){
 }
 
 function HeaderCategory(props:Category){
-  let category_sort:DropdownProps[] = [{ value: "featured"}, {value: "best-selling"}];
+  let category_sort:DropdownProps[] = [
+    {value: "featured", text: "Featured", selected: false},
+    {value: "best-selling", text: "Best selling", selected: false},
+    {value: "title-ascending", text: "Alphabetically, A-Z", selected: false},
+    {value: "title-descending", text: "Alphabetically, Z-A", selected: false},
+    {value: "price-ascending", text: "Price, low to high", selected: false},
+    {value: "price-descending", text: "Price, high to low", selected: false},
+    {value: "created-ascending", text: "Date, old to new", selected: false},
+    {value: "created-descending", text: "Date, new to old", selected: false}
+  ];
 
   return(
       <subheader className = "subheader-category">
@@ -253,7 +263,7 @@ function HeaderCategory(props:Category){
           <size-wrapper className = "category-position">
             <filter-select>
               <filter-title>Sort By</filter-title>
-              <Dropdown />
+              <Dropdown {...category_sort} />
             </filter-select>
             <filter-count>{props.product.length} products</filter-count>
           </size-wrapper>
