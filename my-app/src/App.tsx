@@ -115,56 +115,37 @@ function ProductSort(props:ProductSortProps){
   return(
   <product>
     <product-image source = {source} style = {{backgroundImage: `url(${source})`}} class = "image product-sort-image"></product-image>
-    <product-title className = "product-sort-title">{props.product.title || "Neon Pink"} | {props.category.title}</product-title>
+    <product-title class = "foo">{props.product.title || "Neon Pink"} | {props.category.title}</product-title>
     <review-stars>
       <ion-icon name="star" />
       <ion-icon name="star" />
       <ion-icon name="star" />
       <ion-icon name="star" />
       <ion-icon name="star" />
-      <review-count>{props.product.reviewCount /*"reviews"*/ || "100 reviews" }</review-count>
+      <review-count>{props.product.reviewCount || "100"} reviews</review-count>
     </review-stars>
     <product-price>${props.product.price || "Sold Out"}</product-price>
   </product>
   );
 }
 
-interface DropdownProps{
+interface OptionProps{
   value: string,
   text: string,
   selected: boolean
 }
 
-function Dropdown(props:DropdownProps[]){
-  let inputs:DropdownProps[] = props;
-  let option_elements:JSX.Element[] = [];
+interface DropdownProps{
+  children: JSX.Element|JSX.Element[]
+}
 
-  for(let index of inputs){
-    option_elements.push(<option value = {index.value} selected = {index.selected} className = "dropdown-option">{index.text}</option>);
-  }
-
+function Dropdown(props:DropdownProps){
   return(
     <select name = "sort_by" id = "sort_by" className = "dropdown-select">
-      {option_elements}
+      {props.children}
     </select>
   );
 }
-
-/* HARDCODED
-function Dropdown(props:DropdownProps){
-  return(
-    <select name = "sort_by" id = "sort_by">
-      <option value = "featured">Featured</option>
-      <option value = "best-selling">Best selling</option>
-      <option value = "title-ascending">Alphabetically, A-Z</option>
-      <option value = "title-descending">Alphabetically, Z-A</option>
-      <option value = "price-ascending">Price, low to high</option>
-      <option value = "price-descending">Price, high to low</option>
-      <option value = "created-ascending">Date, old to new</option>
-      <option value = "created-descending">Date, new to old</option>
-    </select>
-  );
-}*/
 
 function CategoryIcon(props:Category){
   let source = props.source || "http://placekitten.com/890/890";
@@ -177,12 +158,12 @@ function CategoryIcon(props:Category){
   );
 }
 
-interface Gallery{
+interface GalleryProps{
   children: JSX.Element|JSX.Element[],
   title?: string
 }
 
-function Gallery(props:Gallery){
+function Gallery(props:GalleryProps){
   return(
     <collection>
       <section-title>{props.title}</section-title>
@@ -246,9 +227,9 @@ function HeaderMain(){
 }
 
 function HeaderCategory(props:Category){
-  let category_sort:DropdownProps[] = [
+  let category_sort:OptionProps[] = [
     {value: "featured", text: "Featured", selected: false},
-    {value: "best-selling", text: "Best selling", selected: false},
+    {value: "best-selling", text: "Best selling", selected: true},
     {value: "title-ascending", text: "Alphabetically, A-Z", selected: false},
     {value: "title-descending", text: "Alphabetically, Z-A", selected: false},
     {value: "price-ascending", text: "Price, low to high", selected: false},
@@ -257,6 +238,12 @@ function HeaderCategory(props:Category){
     {value: "created-descending", text: "Date, new to old", selected: false}
   ];
 
+  let option_elements:JSX.Element[] = [];
+
+  for(let option of category_sort){
+    option_elements.push(<option value = {option.value} selected = {option.selected} className = "dropdown-option">{option.text}</option>);
+  }
+
   return(
       <subheader className = "subheader-category">
         <subheader-title className = "category-page-title">{props.title}</subheader-title>
@@ -264,7 +251,7 @@ function HeaderCategory(props:Category){
           <size-wrapper className = "category-position">
             <filter-select>
               <filter-title>Sort By</filter-title>
-              <Dropdown {...category_sort} />
+              <Dropdown>{option_elements}</Dropdown>
             </filter-select>
             <filter-count>{props.product.length} products</filter-count>
           </size-wrapper>
@@ -275,7 +262,7 @@ function HeaderCategory(props:Category){
 
 function FooterMain(){
   return(
-    <content class = "lower-content">
+    <content className = "lower-content">
       <footer>
           <footer-column class = "quick-links">
               <column-header>Quick Links</column-header>

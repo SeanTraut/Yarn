@@ -232,6 +232,9 @@ product{
 
 product-title{
     font-size: 17px;
+}
+
+.foo{
     font-family: Alfie, serif;
 }
 
