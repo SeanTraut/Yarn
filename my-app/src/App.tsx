@@ -1,5 +1,6 @@
 import React from 'react';
 import './bizzyclone.css';
+import { ReactComponent } from '*.svg';
 
 /* === Types (Upper CamelCase) === */
 
@@ -115,7 +116,7 @@ function ProductSort(props:ProductSortProps){
   return(
   <product>
     <product-image source = {source} style = {{backgroundImage: `url(${source})`}} class = "image product-sort-image"></product-image>
-    <product-title class = "foo">{props.product.title || "Neon Pink"} | {props.category.title}</product-title>
+    <product-title class = "product-sort-title">{props.product.title || "Neon Pink"} | {props.category.title}</product-title>
     <review-stars>
       <ion-icon name="star" />
       <ion-icon name="star" />
@@ -139,12 +140,39 @@ interface DropdownProps{
   children: JSX.Element|JSX.Element[]
 }
 
-function Dropdown(props:DropdownProps){
+/*function Dropdown(props:DropdownProps){
   return(
     <select name = "sort_by" id = "sort_by" className = "dropdown-select">
       {props.children}
     </select>
   );
+}*/
+
+class Dropdown extends React.Component{
+  constructor(props:any){
+    super(props);
+  }
+
+  state = {
+    options: [],
+    selected: ""
+  };
+
+  /* A for loop somewhere for loops can be, turning array passed to Dropdown into options:jsx.elements then dropped into code*/
+
+  render(){
+    return(
+      <dropdown>
+        <nav>
+          <current-value>Current Value</current-value>
+          <ion-icon name = "chevron-down" />
+        <option-list>
+          {this.state.options}
+        </option-list>
+        </nav>
+      </dropdown>
+    );
+  }
 }
 
 function CategoryIcon(props:Category){
@@ -238,12 +266,6 @@ function HeaderCategory(props:Category){
     {value: "created-descending", text: "Date, new to old", selected: false}
   ];
 
-  let option_elements:JSX.Element[] = [];
-
-  for(let option of category_sort){
-    option_elements.push(<option value = {option.value} selected = {option.selected} className = "dropdown-option">{option.text}</option>);
-  }
-
   return(
       <subheader className = "subheader-category">
         <subheader-title className = "category-page-title">{props.title}</subheader-title>
@@ -251,7 +273,7 @@ function HeaderCategory(props:Category){
           <size-wrapper className = "category-position">
             <filter-select>
               <filter-title>Sort By</filter-title>
-              <Dropdown>{option_elements}</Dropdown>
+              <Dropdown>{category_sort}</Dropdown>
             </filter-select>
             <filter-count>{props.product.length} products</filter-count>
           </size-wrapper>
@@ -314,6 +336,19 @@ interface CategoryPageProps{
   category: Category
 }
 
+function Container(props:any){
+  console.log(props.children);
+  let children = [];
+
+  for(let child of props.children){
+    children.push(<item value={typeof child === "string" ? child : child.props.value}>{child}</item>);
+  }
+
+  return(
+    <container>{children}</container>
+  ); 
+}
+
 function CategoryPage(props:CategoryPageProps){
   let category = props.category;
   let product_sort_elements:JSX.Element[] = [];
@@ -330,6 +365,12 @@ function CategoryPage(props:CategoryPageProps){
       <HeaderCategory {...category} />
       <content class = "upper-content">
         <center-wrapper>
+          <Container>
+            Roomba
+            <div value="iggy">dog</div>
+            <div value="tater">kitty</div>
+            7orsomething
+          </Container>
           <Gallery>{product_sort_elements}</Gallery>
         </center-wrapper>
       </content>
@@ -403,5 +444,6 @@ for(let product of products){
 for(let category of categories){
   category_elements.push(<CategoryIcon {...category} />);
 }
+
 
 export default App;
