@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import './bizzyclone.css';
 import { ReactComponent } from '*.svg';
 
@@ -136,9 +136,9 @@ interface OptionProps{
   selected: boolean
 }
 
-interface DropdownProps{
+/*interface DropdownProps{
   children: JSX.Element|JSX.Element[]
-}
+}*/
 
 /*function Dropdown(props:DropdownProps){
   return(
@@ -148,17 +148,23 @@ interface DropdownProps{
   );
 }*/
 
-class Dropdown extends React.Component{
-  constructor(props:any){
-    super(props);
-  }
+interface DropdownProps{
+  children: {}
+}
 
+class Dropdown extends React.Component{
   state = {
     options: [],
     selected: ""
   };
 
-  /* A for loop somewhere for loops can be, turning array passed to Dropdown into options:jsx.elements then dropped into code*/
+  constructor(props:DropdownProps){
+    super(props);
+
+    for(let option of this.props.children){
+      this.state.options.push(<option  value={children.value}>{children.text}</option>);
+    }
+  }
 
   render(){
     return(
@@ -365,12 +371,6 @@ function CategoryPage(props:CategoryPageProps){
       <HeaderCategory {...category} />
       <content class = "upper-content">
         <center-wrapper>
-          <Container>
-            Roomba
-            <div value="iggy">dog</div>
-            <div value="tater">kitty</div>
-            7orsomething
-          </Container>
           <Gallery>{product_sort_elements}</Gallery>
         </center-wrapper>
       </content>
