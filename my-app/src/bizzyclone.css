@@ -586,22 +586,24 @@ filter-count{
 }
 
 /* === Dropdown Styling === */
-test-wrapper{
-    flex: 0;
-    flex-direction: row;
+dropdown{
+    position: relative;
+    user-select: none;
+    flex-direction: column;
 }
 
-.dropdown-select{
-    flex: 0 0 120px;
+dropdown-nav{
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
-    font-family: Abel, sans-serif;
-    font-size: 16px;
-    border: none;
 }
-.dropdown-option{
-    flex: 0 0 120px;
-    overflow: hidden;
-    text-align: center;
+
+option-list{
+    position: absolute;
+    top: 100%;
+    background:white;
+}
+
+option-list.false{
+    display: none;
 }

@@ -149,33 +149,69 @@ interface OptionProps{
 }*/
 
 interface DropdownProps{
-  children: {}
+  children: {value: string, text: string, selected: boolean}[]
 }
 
-class Dropdown extends React.Component{
-  state = {
-    options: [],
-    selected: ""
+interface DropdownState{
+  selected: string,
+  open: boolean
+}
+
+class Dropdown extends React.Component<DropdownProps>{
+  state:DropdownState = {
+    selected: "Current Value",
+    open: false
   };
 
   constructor(props:DropdownProps){
     super(props);
+  }
 
-    for(let option of this.props.children){
-      this.state.options.push(<option  value={children.value}>{children.text}</option>);
-    }
+  toggle_options = () => {
+    console.trace();
+
+    this.setState({
+      selected: this.state.selected,
+      open: !this.state.open
+    });
+  }
+
+  select_option = (event:React.MouseEvent<HTMLOptionElement>) => {
+    console.trace();
+
+    this.setState({
+      selected: (event.target as any as {value: string})?.value,
+      open: false
+    });
+
+    console.log((event.target as any as {value: string})?.value, this.state.selected);
+
+    event.stopPropagation();
   }
 
   render(){
+    console.log(this.state.selected);
+    let options = [];
+    let text = this.props.children[0].text;
+
+    for(let option of this.props.children){
+      
+      if(option.value === this.state.selected){
+        text = option.text;
+      }
+
+      options.push(<option value={option.value} onClick={this.select_option}>{option.text}</option>);
+    }
+
     return(
-      <dropdown>
-        <nav>
-          <current-value>Current Value</current-value>
+      <dropdown onClick={this.toggle_options}>
+        <dropdown-nav>
+          <current-value>{text}</current-value>
           <ion-icon name = "chevron-down" />
-        <option-list>
-          {this.state.options}
+        </dropdown-nav>
+        <option-list class={this.state.open}>
+          {options}
         </option-list>
-        </nav>
       </dropdown>
     );
   }
