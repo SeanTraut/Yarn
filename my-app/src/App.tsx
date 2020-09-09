@@ -78,13 +78,7 @@ function App() {
   if(open_category){
     return (
       <div className="App">
-        <CategoryPage category = {open_category}/>
-      </div>
-    );
-  }else{
-    return(
-      <div className="App">
-        <HomePage />
+        <ProductPage />
       </div>
     );
   }
@@ -408,6 +402,93 @@ function CategoryPage(props:CategoryPageProps){
       <content class = "upper-content">
         <center-wrapper>
           <Gallery>{product_sort_elements}</Gallery>
+        </center-wrapper>
+      </content>
+      <FooterMain />
+    </div>
+  );
+}
+
+interface ProductPageProps{
+
+}
+
+function ProductPage(props:ProductPageProps){
+  let style_sort:OptionProps[] = [
+    {value: "twist", text: "Twist", selected: false},
+    {value: "tie", text: "Tie", selected: true},
+    {value: "wide-tie", text: "Wide Tie", selected: false},
+    {value: "wrap", text: "Wrap", selected: false},
+    {value: "wide-wrap", text: "Wide Wrap", selected: false},
+  ];
+
+  return(
+    <div>
+      <HeaderMain />
+      <content class = "upper-content">
+        <center-wrapper>
+          <product-page>
+            <vertical-half>
+              <focus-image />
+              <image-select>
+                <image-option />
+                <image-option />
+                <image-option />
+                <image-option />
+                <image-option />
+                <image-option />
+                <image-option />
+                <image-option />
+                <image-option />
+              </image-select>
+            </vertical-half>
+            <vertical-half>
+              <product-header>White</product-header>
+              <review-info>
+                <review-stars>
+                  <ion-icon name="star" />
+                  <ion-icon name="star" />
+                  <ion-icon name="star" />
+                  <ion-icon name="star" />
+                  <ion-icon name="star" />
+                </review-stars>
+                <review-count>32 reviews</review-count>
+              </review-info>
+              <product-type>
+                <type-title>Style</type-title>
+                <Dropdown>{style_sort}</Dropdown>
+              </product-type>
+              <add-to-cart>Add to Cart</add-to-cart>
+              <google-pay>Buy with G Pay</google-pay>
+              <pay-options>More payment options</pay-options>
+              <add-to-wishlist>Add to Wishlist</add-to-wishlist>
+              <product-blurb>
+                This headband is part of the BizzyBasics collection. This collection is made of solid neutral fabrics that will match with a variety of outfits and become a staple in your wardrobe. It is made out of a very soft and stretchy brushed poly fabric. 
+              </product-blurb>
+              <product-details>
+                <details-title>Details</details-title>
+                <details-subtitle>Wraps</details-subtitle>
+                <ul>
+                  <li>Measures 19 inches unstretched</li>
+                  <li>Elastic at the back is covered in fabric to help it stretch to your size</li>
+                  <li>Wide wrap is 6.5 inches wide vs. wrap is 3.5 inches wide</li>
+                </ul>
+                <details-subtitle>Tie / Wide Tie</details-subtitle>
+                <ul>
+                  <li>Measures 27 inches unstretched</li>
+                  <li>Can be untied and loosened to fit your specific head size</li>
+                  <li>Can be worn with the tie in the front or the back</li>
+                  <li>Wide tie is 4 inches wide vs. tie is 2 inches wide</li>
+                </ul>
+                <details-subtitle>Twist</details-subtitle>
+                <ul>
+                  <li>Measures 19 inches unstretched</li>
+                  <li>Can be worn twisted or untwisted</li>
+                  <li>2.5 inches wide</li>
+                </ul>
+              </product-details>
+            </vertical-half>
+          </product-page>
         </center-wrapper>
       </content>
       <FooterMain />
