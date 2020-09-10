@@ -176,7 +176,7 @@ class Dropdown extends React.Component<DropdownProps>{
   render(){
     console.log(this.state.selected);
     let options = [];
-    let style = this.props.class;
+    let style = `${this.props.class} ${this.state.open ? "open" : "closed"}`;
     let text = this.props.children[0].text;
 
     for(let option of this.props.children){
@@ -190,11 +190,11 @@ class Dropdown extends React.Component<DropdownProps>{
 
     return(
       <dropdown onClick={this.toggle_options} className = {style}>
-        <dropdown-nav className = {style}>
-          <current-value className = {style}>{text}</current-value>
+        <dropdown-nav>
+          <current-value>{text}</current-value>
           <ion-icon name = "chevron-down" />
         </dropdown-nav>
-        <option-list class={this.state.open}>
+        <option-list>
           {options}
         </option-list>
       </dropdown>
@@ -475,9 +475,18 @@ function ProductPage(props:ProductPageProps){
                 <Dropdown class = "style">{style_sort}</Dropdown>
               </product-type>
               <Button class = "add-to-cart">Add to Cart</Button>
-              <Button class = "g-pay">Buy with G Pay</Button>
+              <Button class = "g-pay">
+                <text>Buy with&nbsp;</text>
+                <i className="fab fa-google-pay" />
+              </Button>
               <Button class = "payment-options">More payment options</Button>
-              <Button class = "wishlist">Add to Wishlist</Button>
+              <Button class = "add-to-wishlist">
+                <box>
+                  <i className="far fa-heart" />
+                  <text>Add to Wishlist</text>
+                </box>
+                <count>48</count>
+              </Button>
               <product-blurb>
                 This headband is part of the BizzyBasics collection. This collection is made of solid neutral fabrics that will match with a variety of outfits and become a staple in your wardrobe. It is made out of a very soft and stretchy brushed poly fabric. 
               </product-blurb>
