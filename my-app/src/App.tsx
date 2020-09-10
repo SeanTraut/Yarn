@@ -429,7 +429,9 @@ function ProductPage(props:ProductPageProps){
         <center-wrapper>
           <product-page>
             <vertical-half>
-              <focus-image />
+              <image-box>
+                <focus-image />
+              </image-box>
               <image-select>
                 <image-option />
                 <image-option />
@@ -452,8 +454,10 @@ function ProductPage(props:ProductPageProps){
                   <ion-icon name="star" />
                   <ion-icon name="star" />
                 </review-stars>
-                <review-count>32 reviews</review-count>
+                <review-count>&nbsp;32 reviews</review-count>
               </review-info>
+              <price>$15.00</price>
+              <shipping-details><a href="">Shipping</a>&nbsp;calculated at checkout.</shipping-details>
               <product-type>
                 <type-title>Style</type-title>
                 <Dropdown>{style_sort}</Dropdown>

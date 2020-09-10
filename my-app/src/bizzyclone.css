@@ -49,6 +49,12 @@ spacer{
     flex: 1;
 }
 
+a{
+    text-decoration: none;
+    color: rgb(61, 66, 70);
+    border-bottom: 1px solid rgba(0,0,0,.4);
+}
+
  /* === Header === */
 
 announcement-bar{
@@ -615,31 +621,78 @@ product-page{
 }
 
 vertical-half{
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
+    margin-top: 55px;
 }
 
+image-box{
+    justify-content: center;
+    align-items: center;
+}
 focus-image{
     background-image: url("http://placekitten.com/1000/1000");
-    width: 100%;
-    padding-top: 100%;
+    width: 400px;
+    height: 400px;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 image-select{
+    flex: 0 0 20%;
     flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
 image-option{
     background-image: url("http://placekitten.com/1000/1000");
-    width: 100%;
-    padding-top: 100%;
+    width: 100px;
+    height: 100px;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
+product-header{
+    font-family: Alfie;
+    font-size: 35px;
+}
+
 review-info{
     flex-direction: row;
+    align-items: center;
+}
+
+review-stars{
+    font-size: 20px;
+    padding-bottom: 4px;
+}
+
+price{
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+shipping-details{
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+product-blurb{
+    margin: 20px 0;
+}
+
+details-title{
+    font-family: Alfie, serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+details-subtitle{
+    font-weight: 700;
+}
+
+product-details li{
+    display: list-item;
+    list-style: inside;
 }
