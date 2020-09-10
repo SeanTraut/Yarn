@@ -130,19 +130,9 @@ interface OptionProps{
   selected: boolean
 }
 
-/*interface DropdownProps{
-  children: JSX.Element|JSX.Element[]
-}*/
-
-/*function Dropdown(props:DropdownProps){
-  return(
-    <select name = "sort_by" id = "sort_by" className = "dropdown-select">
-      {props.children}
-    </select>
-  );
-}*/
 
 interface DropdownProps{
+  class: string,
   children: {value: string, text: string, selected: boolean}[]
 }
 
@@ -186,6 +176,7 @@ class Dropdown extends React.Component<DropdownProps>{
   render(){
     console.log(this.state.selected);
     let options = [];
+    let style = this.props.class;
     let text = this.props.children[0].text;
 
     for(let option of this.props.children){
@@ -198,15 +189,36 @@ class Dropdown extends React.Component<DropdownProps>{
     }
 
     return(
-      <dropdown onClick={this.toggle_options}>
-        <dropdown-nav>
-          <current-value>{text}</current-value>
+      <dropdown onClick={this.toggle_options} className = {style}>
+        <dropdown-nav className = {style}>
+          <current-value className = {style}>{text}</current-value>
           <ion-icon name = "chevron-down" />
         </dropdown-nav>
         <option-list class={this.state.open}>
           {options}
         </option-list>
       </dropdown>
+    );
+  }
+}
+
+interface ButtonProps{
+  class: string,
+  children: any
+}
+
+class Button extends React.Component<ButtonProps>{
+  constructor(props:DropdownProps){
+    super(props);
+  }
+
+  render(){
+    let style = this.props.class;
+    
+    return(
+      <btn className = {style}>
+        <btn-content className = {style}>{this.props.children}</btn-content>
+      </btn>
     );
   }
 }
@@ -309,7 +321,7 @@ function HeaderCategory(props:Category){
           <size-wrapper className = "category-position">
             <filter-select>
               <filter-title>Sort By</filter-title>
-              <Dropdown>{category_sort}</Dropdown>
+              <Dropdown class = "category">{category_sort}</Dropdown>
             </filter-select>
             <filter-count>{props.product.length} products</filter-count>
           </size-wrapper>
@@ -460,7 +472,7 @@ function ProductPage(props:ProductPageProps){
               <shipping-details><a href="">Shipping</a>&nbsp;calculated at checkout.</shipping-details>
               <product-type>
                 <type-title>Style</type-title>
-                <Dropdown>{style_sort}</Dropdown>
+                <Dropdown class = "style">{style_sort}</Dropdown>
               </product-type>
               <add-to-cart>Add to Cart</add-to-cart>
               <google-pay>Buy with G Pay</google-pay>
