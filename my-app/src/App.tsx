@@ -214,7 +214,7 @@ class Button extends React.Component<ButtonProps>{
 
   render(){
     let style = this.props.class;
-    
+
     return(
       <btn className = {style}>
         <btn-content className = {style}>{this.props.children}</btn-content>
@@ -474,10 +474,10 @@ function ProductPage(props:ProductPageProps){
                 <type-title>Style</type-title>
                 <Dropdown class = "style">{style_sort}</Dropdown>
               </product-type>
-              <add-to-cart>Add to Cart</add-to-cart>
-              <google-pay>Buy with G Pay</google-pay>
-              <pay-options>More payment options</pay-options>
-              <add-to-wishlist>Add to Wishlist</add-to-wishlist>
+              <Button class = "add-to-cart">Add to Cart</Button>
+              <Button class = "g-pay">Buy with G Pay</Button>
+              <Button class = "payment-options">More payment options</Button>
+              <Button class = "wishlist">Add to Wishlist</Button>
               <product-blurb>
                 This headband is part of the BizzyBasics collection. This collection is made of solid neutral fabrics that will match with a variety of outfits and become a staple in your wardrobe. It is made out of a very soft and stretchy brushed poly fabric. 
               </product-blurb>
