@@ -29,6 +29,7 @@ interface Product{
   title: string,
   price: number,
   source: string,
+  description: string,
   category: Category[],
   featured?: boolean,
   instock?: boolean,
@@ -52,24 +53,9 @@ interface Category{
   product: Product[],
 }
 
-let myProduct:Product = {
-  title: "Magic",
-  price: 15.00,
-  source: "asdf",
-  category: []
-}
-
-let myCategory:Category = {
-  title: "Category",
-  type: "Collection",
-  source: "Source",
-  product: [myProduct, {title: "drinking-water", price: 9999, source: "mother-earth", category: []}]
-}
-
 let products:Product[] = [];
 let categories:Category[] = [];
 let open_category:Category|undefined;
-
 
 /* === Functions === */
 
@@ -422,8 +408,10 @@ function CategoryPage(props:CategoryPageProps){
 }
 
 interface ProductPageProps{
+  product: Product,
 
 }
+
 
 function ProductPage(props:ProductPageProps){
   let style_sort:OptionProps[] = [
@@ -457,7 +445,7 @@ function ProductPage(props:ProductPageProps){
               </image-select>
             </vertical-half>
             <vertical-half>
-              <product-header>White</product-header>
+              <product-header>{props.product.title}</product-header>
               <review-info>
                 <review-stars>
                   <ion-icon name="star" />
@@ -466,9 +454,9 @@ function ProductPage(props:ProductPageProps){
                   <ion-icon name="star" />
                   <ion-icon name="star" />
                 </review-stars>
-                <review-count>&nbsp;32 reviews</review-count>
+                <review-count>&nbsp;{props.product.reviewCount}</review-count>
               </review-info>
-              <price>$15.00</price>
+              <price>{props.product.price}</price>
               <shipping-details><a href="">Shipping</a>&nbsp;calculated at checkout.</shipping-details>
               <product-type>
                 <type-title>Style</type-title>
@@ -488,7 +476,7 @@ function ProductPage(props:ProductPageProps){
                 <count>48</count>
               </Button>
               <product-blurb>
-                This headband is part of the BizzyBasics collection. This collection is made of solid neutral fabrics that will match with a variety of outfits and become a staple in your wardrobe. It is made out of a very soft and stretchy brushed poly fabric. 
+                {props.product.description} 
               </product-blurb>
               <product-details>
                 <details-title>Details</details-title>
