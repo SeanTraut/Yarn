@@ -27,7 +27,7 @@ interface User{
 
 interface Product{
   title: string,
-  price: number,
+  price: string,
   source: string,
   description: string,
   category: Category[],
@@ -57,6 +57,57 @@ let products:Product[] = [];
 let categories:Category[] = [];
 let open_category:Category|undefined;
 
+interface ProductPageProps{
+  product: Product,
+}
+
+let testProductCategories:Category[]
+= [
+  {
+    type: "twist",
+    title: "Twist",
+    source: "source",
+    product: []
+  },
+  {
+    type: "tie",
+    title: "Tie",
+    source: "source",
+    product: []
+  },
+  {
+    type: "wide-tie",
+    title: "Wide Tie",
+    source: "source",
+    product: []
+  },
+  {
+    type: "wrap",
+    title: "Wrap",
+    source: "source",
+    product: []
+  },
+  {
+    type: "wide-wrap",
+    title: "Wide Wrap",
+    source: "source",
+    product: []
+  }
+];
+
+let testProduct:Product = {
+  title: "White",
+  price: "$15.00",
+  source: "source",
+  description: "description",
+  category: testProductCategories,
+};
+
+let testProductPageProps:ProductPageProps = {
+  product: testProduct
+};
+
+
 /* === Functions === */
 
 function App() {
@@ -64,7 +115,7 @@ function App() {
   if(open_category){
     return (
       <div className="App">
-        <ProductPage />
+        <ProductPage {...testProductPageProps} />
       </div>
     );
   }
@@ -407,20 +458,14 @@ function CategoryPage(props:CategoryPageProps){
   );
 }
 
-interface ProductPageProps{
-  product: Product,
-
-}
 
 
 function ProductPage(props:ProductPageProps){
-  let style_sort:OptionProps[] = [
-    {value: "twist", text: "Twist", selected: false},
-    {value: "tie", text: "Tie", selected: true},
-    {value: "wide-tie", text: "Wide Tie", selected: false},
-    {value: "wrap", text: "Wrap", selected: false},
-    {value: "wide-wrap", text: "Wide Wrap", selected: false},
-  ];
+  let style_sort:OptionProps[] = [];
+
+  for(let cat of props.product.category){
+    style_sort.push({value: cat.type, text: cat.title, selected: false});
+  }
 
   return(
     <div>
@@ -511,10 +556,10 @@ function ProductPage(props:ProductPageProps){
 
 /* === Constructors === */
 
-function make_product(title:string, price:number, source:string,
+function make_product(title:string, price:string, source:string,
   categories:Category[] = [], instock?:boolean, featured?:boolean):Product{
   
-  let product:Product = {title, price, source, category: categories, featured, instock};
+  let product:Product = {title, price, source, description: "wow!", category: categories, featured, instock};
   
   for(let category of categories){
     category.product.push(product);
@@ -538,15 +583,15 @@ function make_category(type:string, title:string, source:string, products:Produc
 
 (function() {
   //products
-  let neon_pink = make_product("Neon Pink", 15.00, "http://placekitten.com/900/900");
-  let leaf_scarf_tie = make_product("Leaf Scarf Tie", 15.00, "http://placekitten.com/901/901");
-  let fuschia_scarf_tie = make_product("Fuschia Scarf Tie", 15.00, "http://placekitten.com/902/902");
-  let turquoise_scarf_tie = make_product("Turquoise Scarf Tie", 15.00, "http://placekitten.com/903/903");
-  let retro_dot_scarf_tie = make_product("Retro Dot Scarf Tie", 15.00, "http://placekitten.com/904/904");
-  let ikat_scarf_tie = make_product("Ikat Scarf Tie", 15.00, "http://placekitten.com/905/905");
-  let kelly_green = make_product("Kelly Green", 15.00, "http://placekitten.com/906/906");
-  let peach = make_product("Peach", 15.00, "http://placekitten.com/907/907");
-  let red = make_product("Red", 15.00, "https://dummyimage.com/900/FF0000/fff.jpg&text=Red");
+  let neon_pink = make_product("Neon Pink", "$15.00", "http://placekitten.com/900/900");
+  let leaf_scarf_tie = make_product("Leaf Scarf Tie", "$15.00", "http://placekitten.com/901/901");
+  let fuschia_scarf_tie = make_product("Fuschia Scarf Tie", "$15.00", "http://placekitten.com/902/902");
+  let turquoise_scarf_tie = make_product("Turquoise Scarf Tie", "$15.00", "http://placekitten.com/903/903");
+  let retro_dot_scarf_tie = make_product("Retro Dot Scarf Tie", "$15.00", "http://placekitten.com/904/904");
+  let ikat_scarf_tie = make_product("Ikat Scarf Tie", "$15.00", "http://placekitten.com/905/905");
+  let kelly_green = make_product("Kelly Green", "$15.00", "http://placekitten.com/906/906");
+  let peach = make_product("Peach", "$15.00", "http://placekitten.com/907/907");
+  let red = make_product("Red", "$15.00", "https://dummyimage.com/900/FF0000/fff.jpg&text=Red");
 
   let scarf_tie_products = [leaf_scarf_tie, fuschia_scarf_tie, turquoise_scarf_tie, retro_dot_scarf_tie, ikat_scarf_tie, red, red, red];
 
