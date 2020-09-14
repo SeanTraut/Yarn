@@ -1,0 +1,212 @@
+/* === Product Page Styling === */
+product-page{
+  flex-direction: row;
+  justify-content: center;
+}
+
+vertical-half{
+  flex: 1 0 0;
+  margin-top: 55px;
+}
+
+vertical-half:last-child{
+  margin-left: 30px;
+
+}
+
+image-box{
+  justify-content: center;
+  align-items: center;
+}
+focus-image{
+  background-image: url("http://placekitten.com/4000/4000");
+  width: 100%;
+  padding-top: 100%;
+  margin-bottom: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+image-select{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px 20px;
+}
+
+image-option{
+  background-image: url("http://placekitten.com/1000/1000");
+  width: 100%;
+  padding-top: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+product-header{
+  font-family: Alfie;
+  font-size: 35px;
+}
+
+review-info{
+  flex-direction: row;
+  align-items: center;
+}
+
+review-stars{
+  font-size: 20px;
+  padding-bottom: 4px;
+}
+
+price{
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+shipping-details{
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+product-blurb{
+  margin: 20px 0;
+}
+
+details-title{
+  font-family: Alfie, serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+details-subtitle{
+  font-weight: 700;
+}
+
+product-details li{
+  display: list-item;
+  list-style: inside;
+}
+
+/* === Product Dropdown Styling === */
+dropdown.style{
+  position: relative;
+  border: 1px solid rgb(148,148,148);
+  padding: 10px 5px 10px 18px;
+  background: white;
+  user-select: none;
+  flex-direction: column;
+}
+
+dropdown.style.open{
+  border: 2px solid rgba(0, 0, 0, .7);
+  padding: 9px 4px 9px 17px;
+}
+
+dropdown.style option-list{
+  background:white;
+  border: 1px solid rgba(0, 0, 0, .7);
+  box-shadow: 2px 0 6px rgba(0,0,0,.4);
+  padding: 0 16px;
+  top: 100%;
+  margin-top: 2px;
+  left: -2px;
+  right: -2px;
+}
+
+/* === Product Button Styling === */
+
+/* Add to Cart */
+btn.add-to-cart{
+  margin-top: 20px;
+  padding: 5px 0;
+  border: 1px solid rgb(85, 123, 151);
+  background: white;
+  font-family: Alfie, serif;
+  text-transform: uppercase;
+  color: rgb(85, 123, 151);
+  justify-content: center;
+  align-items: center;
+}
+btn.add-to-cart:hover{
+  color: rgba(0, 0, 0, .7);
+  border-color: rgba(0, 0, 0, .7);
+}
+
+/* G Pay*/
+btn.g-pay{
+  background: black;
+  margin-top: 20px;
+  padding: 5px 0;
+}
+
+btn.g-pay btn-content{
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+btn.g-pay text{
+  color: white;
+  font-weight: 500;
+}
+
+btn.g-pay i{
+  font-size: 32px;
+  color: white;
+}
+
+/* Payment Options */
+btn.payment-options{
+  margin-top: 10px;
+  padding: 10px 0;
+}
+
+btn.payment-options btn-content{
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+btn.payment-options:hover{
+  filter: opacity(75%);
+}
+
+/* Add to Wishlist */
+btn.add-to-wishlist{
+  flex-direction: row;
+  margin-top: 10px;
+  padding: 5px 0;
+}
+
+btn.add-to-wishlist *{
+  flex: 0 1 auto;
+  flex-direction: row;
+}
+
+btn.add-to-wishlist btn-content{
+  justify-content: center;
+  align-items: stretch;
+}
+
+btn.add-to-wishlist box{
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  user-select: none;
+  padding: 10px 8px 10px 5px;
+  border: 1px solid #a700ff;
+  background: #a700ff;
+  color: white;
+}
+
+btn.add-to-wishlist box i{
+  font-size: 28px;
+  padding-right: 5px;
+}
+
+btn.add-to-wishlist count{
+  border: 1px solid #a700ff;
+  padding: 10px 8px;
+  user-select: none;
+}

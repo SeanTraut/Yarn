@@ -91,7 +91,3 @@ let wide_tie_headbands = make_category("Style", "Wide Tie Headbands", "http://pl
 let wrap_headbands = make_category("Style", "Wrap Headbands", "http://placekitten.com/803/803");
 let wide_wrap_headbands = make_category("Style", "Wide Wrap Headbands", "http://placekitten.com/804/804");
 let scarf_ties = make_category("Style", "Scarf Ties", "http://placekitten.com/805/805", scarf_tie_products);
-
-
-
-

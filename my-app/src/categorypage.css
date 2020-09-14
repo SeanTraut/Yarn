@@ -1,0 +1,67 @@
+/* === Category Header === */
+size-wrapper{
+  flex: 0 1 1200px;
+  flex-direction: row;
+  padding: 0 55px;
+  justify-content: space-between;
+}
+
+.subheader-category{
+  border-top: 1px solid rgba( 0, 0, 0, .1);
+  border-bottom: 1px solid rgba( 0, 0, 0, .1);
+}
+
+subheader-title{
+  font-family: Alfie, sans-serif;
+  font-size: 35px;
+  text-align: center;
+  padding: 55px 0 44px;
+}
+
+sort{
+  flex-direction: row;
+  height: 55px;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba( 0, 0, 0, .1);
+  font-size: 13px;
+}
+
+filter-select{
+  flex-direction: row;
+}
+
+filter-title{
+  margin-right: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+filter-count{
+  font-style: italic;
+  font-size: 15px;
+}
+
+/* === Category Dropdown Styling === */
+dropdown{
+  position: relative;
+  user-select: none;
+  flex-direction: column;
+}
+
+dropdown-nav{
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+option-list{
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  right: 0%;
+}
+
+dropdown.closed option-list{
+  display: none;
+}

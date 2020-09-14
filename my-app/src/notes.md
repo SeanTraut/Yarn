@@ -1,6 +1,6 @@
 # Popular Forms of File Structuring
 
-***☼Data vs UI☼***
+***Data vs UI***
 ---
 - Data + Functions
   - Data Model Interfaces (40~)
@@ -37,18 +37,9 @@
     - ImageGallery*
 
 _______________________________________________
-***Type***
+***CSS Division***
 ---
-- Types
-- Components
-- Maker Functions
-- Pages
-- App
-- ...
-
-***Use***
----
+- Home
+- Category
 - Product
-- Page
-- Review
-- ...
+- Components

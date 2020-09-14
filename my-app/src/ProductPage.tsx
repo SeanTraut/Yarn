@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product, testProduct } from './data';
-import { OptionProps, HeaderMain, Dropdown, Button, FooterMain } from "./shared";
+import { OptionProps, HeaderMain, Dropdown, Button, FooterMain, WishlistButton} from "./shared";
 interface ProductPageProps {
   product: Product;
 }
@@ -49,7 +49,7 @@ export function ProductPage(props: ProductPageProps) {
                 <review-count>&nbsp;{props.product.reviewCount}</review-count>
               </review-info>
               <price>{props.product.price}</price>
-              <shipping-details><a href="">Shipping</a>&nbsp;calculated at checkout.</shipping-details>
+              <shipping-details><a href="/foo">Shipping</a>&nbsp;calculated at checkout.</shipping-details>
               <product-type>
                 <type-title>Style</type-title>
                 <Dropdown class="style">{style_sort}</Dropdown>
@@ -60,13 +60,7 @@ export function ProductPage(props: ProductPageProps) {
                 <i className="fab fa-google-pay" />
               </Button>
               <Button class="payment-options">More payment options</Button>
-              <Button class="add-to-wishlist">
-                <box>
-                  <i className="far fa-heart" />
-                  <text>Add to Wishlist</text>
-                </box>
-                <count>48</count>
-              </Button>
+              <WishlistButton wishlisted={false} count={48}/>
               <product-blurb>
                 {props.product.description}
               </product-blurb>

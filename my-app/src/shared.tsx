@@ -22,10 +22,6 @@ export class Dropdown extends React.Component<DropdownProps> {
     open: false
   };
 
-  constructor(props: DropdownProps) {
-    super(props);
-  }
-
   toggle_options = () => {
     console.trace();
 
@@ -82,10 +78,6 @@ interface ButtonProps {
 }
 
 export class Button extends React.Component<ButtonProps> {
-  constructor(props: DropdownProps) {
-    super(props);
-  }
-
   render() {
     let style = this.props.class;
 
@@ -96,6 +88,37 @@ export class Button extends React.Component<ButtonProps> {
     );
   }
 }
+
+interface WishlistButtonProps{
+  wishlisted: boolean,
+  count: number,
+  class?: string,
+}
+
+export class WishlistButton extends React.Component<WishlistButtonProps>{
+  debug_wishlist = this.props.wishlisted;
+
+  toggle = () =>{
+    this.debug_wishlist = !this.debug_wishlist;
+    this.forceUpdate();
+  }
+
+  render(){
+    let heart_type = this.debug_wishlist ? "fas" : "far";
+    let count_display = this.debug_wishlist ? (this.props.count + 1) : this.props.count;
+
+    return(
+      <Button class={`${this.props.class} add-to-wishlist`}>
+        <box onClick={this.toggle}>
+          <i className={`${heart_type} fa-heart`}/>
+          <text>Add to Wishlist</text>
+        </box>
+        <count>{count_display}</count>
+      </Button>
+    );
+  }
+} 
+
 
 export function CategoryIcon(props: Category) {
   let source = props.source || "http://placekitten.com/890/890";
@@ -130,7 +153,7 @@ export function HeaderMain() {
         <bar-message>Order processing time is 1 week. Check out the FAQ tab below.</bar-message>
       </announcement-bar>
       <site-header>
-        <img src="http://placekitten.com/160/95" className="logo" />
+        <img src="http://placekitten.com/160/95" className="logo" alt="logo" />
         <spacer></spacer>
         <nav>
           <ul>
