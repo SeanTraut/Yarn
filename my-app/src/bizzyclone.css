@@ -1,7 +1,7 @@
 @import "./components.css";
-@import "./homepage.css";
-@import "./categorypage.css";
-@import "./productpage.css";
+@import "./HomePage/homepage.css";
+@import "./CategoryPage/categorypage.css";
+@import "./ProductPage/productpage.css";
 
 /* === General === */
 @font-face{

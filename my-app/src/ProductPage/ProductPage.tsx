@@ -1,6 +1,6 @@
 import React from 'react';
-import { Product, testProduct } from './data';
-import { OptionProps, HeaderMain, Dropdown, Button, FooterMain, WishlistButton} from "./shared";
+import { Product, testProduct } from '../data';
+import { OptionProps, HeaderMain, Dropdown, Button, FooterMain, WishlistButton} from "../shared";
 interface ProductPageProps {
   product: Product;
 }
