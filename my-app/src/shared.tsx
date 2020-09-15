@@ -146,6 +146,10 @@ export function Gallery(props: GalleryProps) {
   );
 }
 
+interface HeaderMainProps{
+  
+}
+
 export function HeaderMain() {
   return (
     <header>

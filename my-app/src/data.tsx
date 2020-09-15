@@ -36,7 +36,8 @@ export interface Category {
   product: Product[];
 }
 
-/* === Maker Functions === */
+
+/* ========================================= Maker Functions =================================================== */
 export function make_product(title:string, price:string, source:string,
   categories:Category[] = [], description?:string, instock?:boolean, featured?:boolean):Product{
   let product:Product = {title, price, source, category: categories, description, instock, featured};
@@ -60,17 +61,18 @@ export function make_category(type:string, title:string, source:string, products
   return category;
 }
 
-/* === Raw Data === */
+
+/* ============================================= Raw Data ======================================================== */
 export let products:Product[] = [];
 export let categories:Category[] = [];
 
-export let testProduct = make_product("White", "$15.00", "source");
+export let testProduct = make_product("Black", "$15.00", "https://dummyimage.com/900/000000/fff.jpg&text=Black");
 export let testProductCategories:Category[] = [];
-testProductCategories.push(make_category("twist", "Twist", "source", [testProduct]));
-testProductCategories.push(make_category("tie", "Tie", "source", [testProduct]));
-testProductCategories.push(make_category("wide-tie", "Wide Tie", "source", [testProduct]));
-testProductCategories.push(make_category("wrap", "Wrap", "source", [testProduct]));
-testProductCategories.push(make_category("wide-wrap", "Wide Wrap", "source", [testProduct]));
+testProductCategories.push(make_category("twist", "Twist", "http://placekitten.com/805/805", [testProduct]));
+testProductCategories.push(make_category("tie", "Tie", "http://placekitten.com/805/805", [testProduct]));
+testProductCategories.push(make_category("wide-tie", "Wide Tie", "http://placekitten.com/805/805", [testProduct]));
+testProductCategories.push(make_category("wrap", "Wrap", "http://placekitten.com/805/805", [testProduct]));
+testProductCategories.push(make_category("wide-wrap", "Wide Wrap", "http://placekitten.com/805/805", [testProduct]));
 
 let neon_pink = make_product("Neon Pink", "$15.00", "http://placekitten.com/900/900");
 let leaf_scarf_tie = make_product("Leaf Scarf Tie", "$15.00", "http://placekitten.com/901/901");
@@ -85,9 +87,4 @@ let red = make_product("Red", "$15.00", "https://dummyimage.com/900/FF0000/fff.j
 
 let scarf_tie_products = [leaf_scarf_tie, fuschia_scarf_tie, turquoise_scarf_tie, retro_dot_scarf_tie, ikat_scarf_tie, red, red, red];
 
-let twist_headbands = make_category("Style", "Twist Headbands", "http://placekitten.com/800/800");
-let tie_headbands = make_category("Style", "Tie Headbands", "http://placekitten.com/801/801");
-let wide_tie_headbands = make_category("Style", "Wide Tie Headbands", "http://placekitten.com/802/802");
-let wrap_headbands = make_category("Style", "Wrap Headbands", "http://placekitten.com/803/803");
-let wide_wrap_headbands = make_category("Style", "Wide Wrap Headbands", "http://placekitten.com/804/804");
-let scarf_ties = make_category("Style", "Scarf Ties", "http://placekitten.com/805/805", scarf_tie_products);
+export let scarf_ties = make_category("Style", "Scarf Ties", "http://placekitten.com/805/805", scarf_tie_products);

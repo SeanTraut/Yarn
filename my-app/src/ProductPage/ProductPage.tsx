@@ -1,12 +1,11 @@
 import React from 'react';
-import { Product, testProduct } from '../data';
+import { Product} from '../data';
 import { OptionProps, HeaderMain, Dropdown, Button, FooterMain, WishlistButton} from "../shared";
-interface ProductPageProps {
+
+export interface ProductPageProps {
   product: Product;
 }
-export let testProductPageProps: ProductPageProps = {
-  product: testProduct
-};
+
 export function ProductPage(props: ProductPageProps) {
   let style_sort: OptionProps[] = [];
 

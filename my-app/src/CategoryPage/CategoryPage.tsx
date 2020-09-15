@@ -1,11 +1,11 @@
 import React from 'react';
-import { Category, Product } from './data';
-import { HeaderMain, HeaderCategory, Gallery, FooterMain } from "./shared";
+import { Category, Product } from '../data';
+import { HeaderMain, HeaderCategory, Gallery, FooterMain } from "../shared";
 
 interface CategoryPageProps {
   category: Category;
 }
-function CategoryPage(props: CategoryPageProps) {
+export function CategoryPage(props: CategoryPageProps) {
   let category = props.category;
   let product_sort_elements: JSX.Element[] = [];
 
@@ -49,7 +49,7 @@ export function ProductSort(props:ProductSortProps){
       <ion-icon name="star" />
       <review-count>{props.product.reviewCount || "100"} reviews</review-count>
     </review-stars>
-    <product-price>${props.product.price || "Sold Out"}</product-price>
+    <product-price>{props.product.price || "Sold Out"}</product-price>
   </product>
   );
 }

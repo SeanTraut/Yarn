@@ -1,10 +1,9 @@
 import React from 'react';
-import { Product, products, categories } from './data';
-import { HeaderMain, Gallery, FooterMain, CategoryIcon } from "./shared";
+import { Product, products, categories } from '../data';
+import { HeaderMain, Gallery, FooterMain, CategoryIcon } from "../shared";
 
 
-function HomePage(props: any) {
-
+export function HomePage(props: any) {
   return (
     <div className="Home">
       <HeaderMain />
@@ -32,7 +31,7 @@ export function ProductHome(props: Product) {
     <product>
       <product-image source={source} style={{ backgroundImage: `url(${source})` }} class="image product-home-image"></product-image>
       <product-title>{props.title || "Neon Pink"}</product-title>
-      <product-price>${props.price || "15.00"}</product-price>
+      <product-price>{props.price || "$15.00"}</product-price>
       <ion-icon name="heart-half" class="favorite-heart"></ion-icon>
     </product>
   );

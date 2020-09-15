@@ -112,6 +112,11 @@ review-stars{
   flex-direction: row;
   color: #3d4246;
 }
+review-count{
+  align-items: center;
+  margin-left: 5px;
+  font-size: 14px;
+}
 
 product-image{
   width: 100%;
