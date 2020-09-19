@@ -14,33 +14,6 @@ vertical-half:last-child{
 
 }
 
-image-box{
-  justify-content: center;
-  align-items: center;
-}
-focus-image{
-  background-image: url("http://placekitten.com/4000/4000");
-  width: 100%;
-  padding-top: 100%;
-  margin-bottom: 20px;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-image-select{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 5px 20px;
-}
-
-image-option{
-  background-image: url("http://placekitten.com/1000/1000");
-  width: 100%;
-  padding-top: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
 product-header{
   font-family: Alfie;
   font-size: 35px;

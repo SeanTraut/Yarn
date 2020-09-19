@@ -1,6 +1,76 @@
 import React from 'react';
-import { Category } from './data';
+import { Product, Category } from './data';
+
 /* === Components === */
+interface ImageGalleryProps{
+  product: Product
+}
+
+interface ImageOptionElement extends HTMLElement{
+  foo: number
+}
+
+export class ImageGallery extends React.Component<ImageGalleryProps>{
+  state = {
+    selected: 0,
+  };
+
+  select_focus = (event:React.MouseEvent<ImageOptionElement>) =>{
+    this.setState({
+      selected: event.currentTarget.getAttribute("foo"),
+    });
+  }
+
+  render(){
+    let index = this.state.selected;
+    let pictures = this.props.product.pictures;
+    let image_options:JSX.Element[] = [];
+    
+    for(let picture of pictures){
+      image_options.push(<image-option foo = {pictures.indexOf(picture)} style={{ backgroundImage: `url(${picture})`}} onClick={this.select_focus}/>);
+    }
+
+    return(
+      <image-gallery>
+        <image-box>
+          <focus-image style={{ backgroundImage: `url(${pictures[index]})` }} />
+        </image-box>
+        <image-select>
+          {image_options}
+        </image-select>
+      </image-gallery>
+    );
+  }
+}
+
+interface ReviewsProps{
+  product: Product
+}
+
+export function Reviews(props:ReviewsProps){
+  let star_count = props.product.reviewAverage || 0;
+  let star_elements:JSX.Element[] = [];
+  let review_count = props.product.reviewCount || 0;
+  
+  for(let i = 0;(i < star_count) && (i < 5); i++){
+    star_elements.push(<ion-icon name="star" />);
+  };
+
+  while(star_elements.length < 5){
+    star_elements.push(<ion-icon name="star-outline" />);
+  };
+  
+  return(
+    <review-info>
+      <review-stars>
+        {star_elements}
+      </review-stars>
+      <review-count>
+        {review_count} reviews
+      </review-count>
+    </review-info>
+  );
+};
 
 export interface OptionProps {
   value: string;
@@ -45,13 +115,11 @@ export class Dropdown extends React.Component<DropdownProps> {
   };
 
   render() {
-    console.log(this.state.selected);
     let options = [];
     let style = `${this.props.class} ${this.state.open ? "open" : "closed"}`;
-    let text = this.props.children[0].text;
+    let text = this.props.children[0] ? this.props.children[0].text : "EMPTY";
 
     for (let option of this.props.children) {
-
       if (option.value === this.state.selected) {
         text = option.text;
       }
@@ -72,6 +140,7 @@ export class Dropdown extends React.Component<DropdownProps> {
     );
   }
 }
+
 interface ButtonProps {
   class: string;
   children: any;
@@ -119,17 +188,6 @@ export class WishlistButton extends React.Component<WishlistButtonProps>{
   }
 } 
 
-
-export function CategoryIcon(props: Category) {
-  let source = props.source || "http://placekitten.com/890/890";
-
-  return (
-    <category>
-      <category-image source={source} style={{ backgroundImage: `url(${source})` }} class="image"></category-image>
-      <category-text>{props.title || "Category Text"}</category-text>
-    </category>
-  );
-}
 interface GalleryProps {
   children: JSX.Element | JSX.Element[];
   title?: string;
@@ -161,22 +219,22 @@ export function HeaderMain() {
         <spacer></spacer>
         <nav>
           <ul>
-            <li className="nav-item"><nav-text>Home</nav-text></li>
+            <li className="nav-item"><a className = "nav-text" href="#home">Home</a></li>
             <li className="nav-item">
-              <nav-text>Shop</nav-text>
+              <a className = "nav-text">Shop</a>
               <dropdown-icon>
                 <ion-icon name="chevron-down"></ion-icon>
               </dropdown-icon>
             </li>
             <li className="nav-item">
-              <nav-text>About</nav-text>
+              <a className = "nav-text">About</a>
               <dropdown-icon>
                 <ion-icon name="chevron-down"></ion-icon>
               </dropdown-icon>
             </li>
-            <li className="nav-item"><nav-text>FAQs</nav-text></li>
-            <li className="nav-item"><nav-text>Contact</nav-text></li>
-            <li className="nav-item"><nav-text>Launch/Restock Info</nav-text></li>
+            <li className="nav-item"><a className = "nav-text">FAQs</a></li>
+            <li className="nav-item"><a className = "nav-text">Contact</a></li>
+            <li className="nav-item"><a className = "nav-text">Launch/Restock Info</a></li>
           </ul>
         </nav>
         <spacer></spacer>

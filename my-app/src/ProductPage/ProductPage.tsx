@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product} from '../data';
-import { OptionProps, HeaderMain, Dropdown, Button, FooterMain, WishlistButton} from "../shared";
+import { OptionProps, HeaderMain, Dropdown, Button, FooterMain, WishlistButton, Reviews, ImageGallery } from "../shared";
 
 export interface ProductPageProps {
   product: Product;
@@ -20,33 +20,11 @@ export function ProductPage(props: ProductPageProps) {
         <center-wrapper>
           <product-page>
             <vertical-half>
-              <image-box>
-                <focus-image />
-              </image-box>
-              <image-select>
-                <image-option />
-                <image-option />
-                <image-option />
-                <image-option />
-                <image-option />
-                <image-option />
-                <image-option />
-                <image-option />
-                <image-option />
-              </image-select>
+              <ImageGallery product = {props.product} />
             </vertical-half>
             <vertical-half>
               <product-header>{props.product.title}</product-header>
-              <review-info>
-                <review-stars>
-                  <ion-icon name="star" />
-                  <ion-icon name="star" />
-                  <ion-icon name="star" />
-                  <ion-icon name="star" />
-                  <ion-icon name="star-outline" />
-                </review-stars>
-                <review-count>&nbsp;{props.product.reviewCount}</review-count>
-              </review-info>
+              <Reviews product = {props.product} />
               <price>{props.product.price}</price>
               <shipping-details><a href="/foo">Shipping</a>&nbsp;calculated at checkout.</shipping-details>
               <product-type>

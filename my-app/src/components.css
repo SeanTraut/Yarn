@@ -222,3 +222,30 @@ footer input{
       align-items: center;
   }
 }
+
+/* ==== Image Gallery ==== */
+image-box{
+  justify-content: center;
+  align-items: center;
+}
+
+focus-image{
+  width: 100%;
+  padding-top: 100%;
+  margin-bottom: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+image-select{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px 20px;
+}
+
+image-option{
+  width: 100%;
+  padding-top: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}

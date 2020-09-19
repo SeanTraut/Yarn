@@ -1,11 +1,10 @@
 import React, { Children } from 'react';
 import './bizzyclone.css';
 import { ReactComponent } from '*.svg';
-import {Product, Category, make_product, make_category, products, categories, testProductCategories, testProduct, scarf_ties } from './data';
+import {Product, Category, db} from './data';
 import { HomePage } from './HomePage/HomePage';
 import { CategoryPage } from './CategoryPage/CategoryPage';
 import { ProductPage } from './ProductPage/ProductPage';
-import { CategoryIcon } from './shared';
 
 declare global{
   namespace JSX {
@@ -14,27 +13,53 @@ declare global{
     }
   }
 }
-
+ 
 interface AppState{
-  page: "HomePage" | "CategoryPage" | "ProductPage",
+  page: string,
   product: Product,
   category: Category
 }
 
 class App extends React.Component<{}> {
   state: AppState = {
-    page: "CategoryPage",
-    product: testProduct,
-    category: scarf_ties
-  }
+    page: "home",
+    product: db.products[0],
+    category: db.categories[0]
+  };
+
+  hash_changed = () => {
+    let url = window.location.hash.slice(1);
+    console.log(url);
+
+    let [page, index] = url.split("/");
+
+    if(!page) return;
+    
+    let new_state = {...this.state, page: page};
+
+    if(page === "product"){
+      if(isNaN(+index)) return;
+      new_state.product = db.products[+index];
+    }else if(page === "category"){
+      if(isNaN(+index)) return;
+      new_state.category = db.categories[+index];
+    }
+
+    this.setState(new_state);
+  };
+
+  componentDidMount(){
+    window.addEventListener("hashchange", this.hash_changed);
+    this.hash_changed();
+  };
 
   render(){
     let content;
-    if (this.state.page === "HomePage"){
+    if (this.state.page === "home"){
       content = <HomePage />;
-    }else if(this.state.page === "ProductPage"){
+    }else if(this.state.page === "product"){
       content = <ProductPage product = {this.state.product} />;
-    }else if(this.state.page === "CategoryPage"){
+    }else if(this.state.page === "category"){
       content = <CategoryPage category = {this.state.category}/>;
     }else{
       content = <div>404: Page Not Found</div>

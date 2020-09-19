@@ -32,7 +32,7 @@
     - Dropdown ✔
     - Button ✔
     - CategoryIcon ✔
-    - Review*
+    - Review ✔
     - Details*
     - ImageGallery*
 

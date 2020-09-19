@@ -94,7 +94,8 @@ section-title{
   text-transform: uppercase;
 }
 
-product{
+.product{
+  border-bottom: none;
   overflow: hidden;
   flex: 0 0 15%;
   margin: 0 5% 5%;
@@ -179,7 +180,7 @@ view-all:hover{
 }
 
 /* === Category === */
-category{
+.category{
   overflow: hidden;
   flex: 0 0 25%;
   margin: 0 4% 5%;

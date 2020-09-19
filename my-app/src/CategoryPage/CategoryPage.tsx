@@ -1,5 +1,5 @@
 import React from 'react';
-import { Category, Product } from '../data';
+import { Category, Product, db} from '../data';
 import { HeaderMain, HeaderCategory, Gallery, FooterMain } from "../shared";
 
 interface CategoryPageProps {
@@ -35,10 +35,10 @@ interface ProductSortProps{
 }
 
 export function ProductSort(props:ProductSortProps){
-  let source = props.product.source || "http://placekitten.com/900/900";
+  let source = props.product.pictures[0] || "http://placekitten.com/900/900";
 
   return(
-  <product>
+  <a href = {`#product/${db.products.indexOf(props.product)}`} className = "product">
     <product-image source = {source} style = {{backgroundImage: `url(${source})`}} class = "image product-sort-image"></product-image>
     <product-title class = "product-sort-title">{props.product.title || "Neon Pink"} | {props.category.title}</product-title>
     <review-stars>
@@ -50,6 +50,6 @@ export function ProductSort(props:ProductSortProps){
       <review-count>{props.product.reviewCount || "100"} reviews</review-count>
     </review-stars>
     <product-price>{props.product.price || "Sold Out"}</product-price>
-  </product>
+  </a>
   );
 }
