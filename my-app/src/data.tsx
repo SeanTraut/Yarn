@@ -1,7 +1,6 @@
 /* === Data Model === */
 interface Cart {
   itemCount: number;
-  total: number;
   products: Product[];
 }
 interface User {
@@ -88,7 +87,19 @@ class Database{
 
   make_user(name:string, email:string, password:string):User{
     let user:User = {name:name, email:email, password:password};
+    this.all_users.push(user);
     return user;
+  };
+
+  add_to_cart(product:Product){
+    if(this.cart){
+      ++this.cart.itemCount;
+      this.cart.products.push(product);
+      return;
+    }
+
+    let cart:Cart = {itemCount: 1, products: [product]};
+    return cart;
   };
 };
 
