@@ -1,6 +1,6 @@
-import React, { Children } from 'react';
+import React/*, { Children }*/ from 'react';
 import './bizzyclone.css';
-import { ReactComponent } from '*.svg';
+//import { ReactComponent } from '*.svg';
 import {Product, Category, db} from './data';
 import { HomePage } from './HomePage/HomePage';
 import { CategoryPage } from './CategoryPage/CategoryPage';
@@ -13,7 +13,17 @@ declare global{
     }
   }
 }
- 
+
+export let app:App | undefined = undefined;
+
+export function rerender(){
+  if(app){
+    app.forceUpdate();
+  };
+}
+
+db.rerender = rerender;
+
 interface AppState{
   page: string,
   product: Product,
@@ -51,6 +61,8 @@ class App extends React.Component<{}> {
   componentDidMount(){
     window.addEventListener("hashchange", this.hash_changed);
     this.hash_changed();
+
+    app = this;
   };
 
   render(){

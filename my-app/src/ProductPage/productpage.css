@@ -86,6 +86,9 @@ dropdown.style option-list{
 }
 
 /* === Product Button Styling === */
+btn{
+  user-select: none;
+}
 
 /* Add to Cart */
 btn.add-to-cart{

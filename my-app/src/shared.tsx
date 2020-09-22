@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product, Category } from './data';
+import { Product, Category, db } from './data';
 
 /* === Components === */
 interface ImageGalleryProps{
@@ -144,15 +144,16 @@ export class Dropdown extends React.Component<DropdownProps> {
 interface ButtonProps {
   class: string;
   children: any;
+  onClick?: Function
 }
 
 export class Button extends React.Component<ButtonProps> {
   render() {
     let style = this.props.class;
-
+    
     return (
       <btn className={style}>
-        <btn-content className={style}>{this.props.children}</btn-content>
+        <btn-content className={style} onClick={this.props.onClick}>{this.props.children}</btn-content>
       </btn>
     );
   }
@@ -208,7 +209,7 @@ interface HeaderMainProps{
   
 }
 
-export function HeaderMain() {
+export function HeaderMain(props:HeaderMainProps) {
   return (
     <header>
       <announcement-bar>
@@ -243,7 +244,7 @@ export function HeaderMain() {
           <ion-icon name="person" class="profile"></ion-icon>
           <cart class="bag">
             <ion-icon name="lock-closed" class="bag-icon"></ion-icon>
-            <icon-data class="bag-count">0</icon-data>
+            <icon-data class="bag-count">{db.cart?.itemCount || 0}</icon-data>
           </cart>
         </controls>
       </site-header>

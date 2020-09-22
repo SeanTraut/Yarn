@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product} from '../data';
+import { db, Product} from '../data';
 import { OptionProps, HeaderMain, Dropdown, Button, FooterMain, WishlistButton, Reviews, ImageGallery } from "../shared";
 
 export interface ProductPageProps {
@@ -31,7 +31,10 @@ export function ProductPage(props: ProductPageProps) {
                 <type-title>Style</type-title>
                 <Dropdown class="style">{style_sort}</Dropdown>
               </product-type>
-              <Button class="add-to-cart">Add to Cart</Button>
+              <Button class="add-to-cart"
+                onClick={() => {db.add_to_cart(props.product)}}>
+                Add to Cart
+              </Button>
               <Button class="g-pay">
                 <text>Buy with&nbsp;</text>
                 <i className="fab fa-google-pay" />
