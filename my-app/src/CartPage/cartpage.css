@@ -1,6 +1,12 @@
-sub-header.cart-header{
+.cart sub-header.cart-title{
   border-top: 1px solid rgba(0,0,0,.1);
+  padding-top: 55px;
+  margin-bottom: 55px;
   font-size: 35px;
   font-family: Alfie, serif;
   text-align: center;
+}
+
+.cart column-top{
+  flex-direction: row;
 }
