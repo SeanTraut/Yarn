@@ -2,6 +2,7 @@
 @import "./HomePage/homepage.css";
 @import "./CategoryPage/categorypage.css";
 @import "./ProductPage/productpage.css";
+@import "./CartPage/cartpage.css";
 
 /* === General === */
 @font-face{

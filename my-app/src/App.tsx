@@ -5,6 +5,7 @@ import {Product, Category, db} from './data';
 import { HomePage } from './HomePage/HomePage';
 import { CategoryPage } from './CategoryPage/CategoryPage';
 import { ProductPage } from './ProductPage/ProductPage';
+import { CartPage } from './CartPage/CartPage';
 
 declare global{
   namespace JSX {
@@ -32,7 +33,7 @@ interface AppState{
 
 class App extends React.Component<{}> {
   state: AppState = {
-    page: "home",
+    page: "cart",
     product: db.products[0],
     category: db.categories[0]
   };
@@ -73,6 +74,8 @@ class App extends React.Component<{}> {
       content = <ProductPage product = {this.state.product} />;
     }else if(this.state.page === "category"){
       content = <CategoryPage category = {this.state.category}/>;
+    }else if(this.state.page === "cart"){
+      content = <CartPage />;
     }else{
       content = <div>404: Page Not Found</div>
     }
