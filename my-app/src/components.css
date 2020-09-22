@@ -67,29 +67,22 @@ controls ion-icon{
 controls ion-icon:hover{
   color: black;
 }
-
-.bag{
+cart.bag{
   position: relative;
 }
-
-.bag:after{
-  content: '';
+icon-data.bag-count{
   position: absolute;
-  background: #557b97;
-  top: -25%;
-  left: 75%;
-  width: 15px;
-  height: 15px;
-  border: 1px solid transparent;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-}
-.bag-count{
-  position: absolute;
+  background:#557b97;
   color: #fff;
-  z-index: 2;
-  font-size: 12px;
-  left: 88%;
-  top: -25%;
+  font-size: 11px;
+  font-weight: bold;
+  top: -30%;
+  right: -20%;
 }
 
 @media (max-width: 425px){

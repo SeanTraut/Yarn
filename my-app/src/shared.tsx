@@ -243,8 +243,8 @@ export function HeaderMain(props:HeaderMainProps) {
           <ion-icon name="search" class="search"></ion-icon>
           <ion-icon name="person" class="profile"></ion-icon>
           <cart class="bag">
-            <ion-icon name="lock-closed" class="bag-icon"></ion-icon>
-            <icon-data class="bag-count">{db.cart?.itemCount || 0}</icon-data>
+            <ion-icon name="lock-closed" class="bag-icon" />
+              <icon-data class="bag-count">{db.cart?.itemCount || 0}</icon-data>
           </cart>
         </controls>
       </site-header>
