@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product, Category, db } from './data';
+import { Product, db } from './data';
 
 /* === Components === */
 interface ImageGalleryProps{
@@ -249,34 +249,6 @@ export function HeaderMain(props:HeaderMainProps) {
         </controls>
       </site-header>
     </header>
-  );
-}
-
-export function HeaderCategory(props: Category) {
-  let category_sort: OptionProps[] = [
-    { value: "featured", text: "Featured", selected: false },
-    { value: "best-selling", text: "Best selling", selected: true },
-    { value: "title-ascending", text: "Alphabetically, A-Z", selected: false },
-    { value: "title-descending", text: "Alphabetically, Z-A", selected: false },
-    { value: "price-ascending", text: "Price, low to high", selected: false },
-    { value: "price-descending", text: "Price, high to low", selected: false },
-    { value: "created-ascending", text: "Date, old to new", selected: false },
-    { value: "created-descending", text: "Date, new to old", selected: false }
-  ];
-
-  return (
-    <subheader className="subheader-category">
-      <subheader-title className="category-page-title">{props.title}</subheader-title>
-      <sort>
-        <size-wrapper className="category-position">
-          <filter-select>
-            <filter-title>Sort By</filter-title>
-            <Dropdown class="category">{category_sort}</Dropdown>
-          </filter-select>
-          <filter-count>{props.product.length} products</filter-count>
-        </size-wrapper>
-      </sort>
-    </subheader>
   );
 }
 

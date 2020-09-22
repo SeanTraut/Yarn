@@ -29,6 +29,8 @@ sort{
 
 filter-select{
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 filter-title{
@@ -38,30 +40,16 @@ filter-title{
 }
 
 filter-count{
+  justify-content: center;
   font-style: italic;
   font-size: 15px;
 }
 
 /* === Category Dropdown Styling === */
-dropdown{
-  position: relative;
-  user-select: none;
-  flex-direction: column;
+dropdown.drop-category{
+  width: 150px;
+  background: white;
 }
-
-dropdown-nav{
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-option-list{
-  position: absolute;
-  top: 100%;
-  left: 0%;
-  right: 0%;
-}
-
-dropdown.closed option-list{
-  display: none;
+dropdown.drop-category option-list{
+  background: white;
 }

@@ -223,6 +223,30 @@ footer input{
   }
 }
 
+/* ==== Dropdown ==== */
+dropdown{
+  position: relative;
+  flex-direction: column;
+  user-select: none;
+  background: white;
+}
+
+dropdown-nav{
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+option-list{
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  right: 0%;
+}
+
+dropdown.closed option-list{
+  display: none;
+}
 /* ==== Image Gallery ==== */
 image-box{
   justify-content: center;

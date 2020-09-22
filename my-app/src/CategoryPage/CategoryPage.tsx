@@ -1,6 +1,35 @@
 import React from 'react';
 import { Category, Product, db} from '../data';
-import { HeaderMain, HeaderCategory, Gallery, FooterMain } from "../shared";
+import { HeaderMain, OptionProps, Dropdown, Gallery, FooterMain } from "../shared";
+
+
+export function HeaderCategory(props: Category) {
+  let category_sort: OptionProps[] = [
+    { value: "featured", text: "Featured", selected: false },
+    { value: "best-selling", text: "Best selling", selected: true },
+    { value: "title-ascending", text: "Alphabetically, A-Z", selected: false },
+    { value: "title-descending", text: "Alphabetically, Z-A", selected: false },
+    { value: "price-ascending", text: "Price, low to high", selected: false },
+    { value: "price-descending", text: "Price, high to low", selected: false },
+    { value: "created-ascending", text: "Date, old to new", selected: false },
+    { value: "created-descending", text: "Date, new to old", selected: false }
+  ];
+
+  return (
+    <subheader className="subheader-category">
+      <subheader-title className="category-page-title">{props.title}</subheader-title>
+      <sort>
+        <size-wrapper className="category-position">
+          <filter-select>
+            <filter-title>Sort By</filter-title>
+            <Dropdown class="drop-category">{category_sort}</Dropdown>
+          </filter-select>
+          <filter-count>{props.product.length} products</filter-count>
+        </size-wrapper>
+      </sort>
+    </subheader>
+  );
+}
 
 interface CategoryPageProps {
   category: Category;
