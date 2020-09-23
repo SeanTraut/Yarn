@@ -7,7 +7,7 @@ export function CartPage(props:CartPageProps){
   return(
     <div className="cart">
       <HeaderMain />
-      <sub-header class="cart-title">Your cart</sub-header>
+        <sub-header class="cart-title">Your cart</sub-header>
         <SizeWrapper>
           <cart>
             <cart-top>
@@ -53,12 +53,12 @@ function CartItem(props:CartItemProps){
     <cart-item>
       <item-image style={{backgroundImage: `url('http://placekitten.com/901/901')`}} />
       <item-details>
-        <item-title>White Dot</item-title>
+        <a className="item-title" href="">White Dot</a>
         <item-style>Style: Twist</item-style>
         <Button class="remove">Remove</Button>
       </item-details>
       <item-price>$15.00</item-price>
-      <item-quantity>1</item-quantity>
+      <input className="item-quantity" type = "number" value="1"/>
       <item-total>$15.00</item-total>
     </cart-item>
   );

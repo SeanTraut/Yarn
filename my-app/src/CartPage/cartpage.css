@@ -1,8 +1,13 @@
 /* === Cart === */
+div.cart size-wrapper{
+  padding: 0 55px;
+  flex-direction: column;
+}
+
 div.cart sub-header.cart-title{
-  border-top: 1px solid rgba(0,0,0,.1);
-  padding-top: 55px;
+  padding: 55px 0 0 0;
   margin-bottom: 55px;
+  border-top: 1px solid rgba(0,0,0,.1);
   font-size: 35px;
   font-family: Alfie, serif;
   text-align: center;
@@ -27,6 +32,7 @@ cart-top column-title{
   border-bottom: 1px solid rgba(0,0,0,.1);
   font-family: Alfie, serif;
   font-size: 16px;
+  padding: 27.5px 0;
 }
 
 cart cart-item{
@@ -35,6 +41,7 @@ cart cart-item{
 }
 
 div.cart cart-bottom{
+  margin-top: 55px;
   flex-direction: row;
 }
 
@@ -120,18 +127,46 @@ checkout btn.dark{
 }
 
 /* === Cart Item === */
-cart-item item-image{
-  width: 60px;
-  padding-top: 60px;
-  background-size: contain;
-  background-repeat: no-repeat;
+cart cart-item{
+  border-bottom: 1px solid rgba(0,0,0,.1);
 }
 
 cart-item > *{
   justify-content: center;
 }
 
-cart-item btn.remove{
+cart-item item-image{
+  align-self: center;
+  width: 95px;
+  padding-top: 95px;
+  margin: 22px 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+cart-item item-details{
+  padding: 22px 35px;
+
+}
+
+item-details .item-title{
+  font-size: 18px;
+  font-family: Abel, sans-serif;
+  border-bottom: none;
+  user-select: none;
+}
+
+item-details item-style{
+  padding: 5px 0;
+  font-size: 14px;
+  font-family: Abel, sans-serif;
+  font-style: italic;
+  color: rgb(61, 66, 70);
+  line-height: 1.5;
+}
+
+item-details btn.remove{
+  line-height: 1;
   align-self: flex-start;
   padding: 8px 10px;
   border: 1px solid rgb(37, 40, 43);
@@ -139,6 +174,20 @@ cart-item btn.remove{
   background: white;
   text-transform: uppercase;
   font-family: Alfie, serif;
-  font-size: 11px;
+  font-size: 12px;
   text-align: center;
+}
+
+cart-item input.item-quantity{
+  align-self: center;
+  width: 60px;
+  height: fit-content;
+  background: white;
+  border: 1px solid rgb(148, 148, 148);
+  border-radius: 2px;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.2;
+  padding: 10px 5px;
 }
