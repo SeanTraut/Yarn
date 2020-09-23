@@ -67,8 +67,9 @@ controls ion-icon{
 controls ion-icon:hover{
   color: black;
 }
-cart.bag{
+a.bag{
   position: relative;
+  border: none;
 }
 icon-data.bag-count{
   position: absolute;
@@ -265,4 +266,16 @@ image-option{
   padding-top: 100%;
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+/* ==== Size Wrapper ==== */
+size-wrapper-outer{
+  flex-direction: row;
+  justify-content: center;
+}
+
+size-wrapper{
+  flex: 0 1 1200px;
+  flex-direction: row;
+  justify-content: space-between;
 }

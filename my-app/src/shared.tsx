@@ -242,10 +242,10 @@ export function HeaderMain(props:HeaderMainProps) {
         <controls>
           <ion-icon name="search" class="search"></ion-icon>
           <ion-icon name="person" class="profile"></ion-icon>
-          <cart class="bag">
+          <a className="bag" href="#cart">
             <ion-icon name="lock-closed" class="bag-icon" />
               <icon-data class="bag-count">{db.cart?.itemCount || 0}</icon-data>
-          </cart>
+          </a>
         </controls>
       </site-header>
     </header>
@@ -277,5 +277,18 @@ export function FooterMain() {
         </footer-column>
       </footer>
     </content>
+  );
+}
+
+interface SizeWrapperProps{
+  children: any
+}
+export function SizeWrapper(props:SizeWrapperProps){
+  return(
+    <size-wrapper-outer>
+      <size-wrapper>
+        {props.children}
+      </size-wrapper>
+    </size-wrapper-outer>
   );
 }

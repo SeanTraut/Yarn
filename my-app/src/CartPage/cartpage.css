@@ -1,4 +1,5 @@
-.cart sub-header.cart-title{
+/* === Cart === */
+div.cart sub-header.cart-title{
   border-top: 1px solid rgba(0,0,0,.1);
   padding-top: 55px;
   margin-bottom: 55px;
@@ -7,6 +8,137 @@
   text-align: center;
 }
 
-.cart column-top{
+div.cart cart{
+  flex: 1;
+  align-items: stretch;
+}
+
+div.cart cart-top{
+  display: grid;
+  grid-template-columns: max-content 3fr 1fr 1fr max-content;
+  grid-auto-rows: max-content;
+}
+
+cart-top column-title:first-child{
+  grid-column: span 2;
+}
+
+cart-top column-title{
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  font-family: Alfie, serif;
+  font-size: 16px;
+}
+
+cart cart-item{
   flex-direction: row;
+  display: contents;
+}
+
+div.cart cart-bottom{
+  flex-direction: row;
+}
+
+order-notes note-title{
+  margin-bottom: 15px;
+  font-family: Abel, sans-serif;
+  font-size: 16px;
+}
+
+order-notes note-box{
+  width: 400px;
+  height: 60px;
+  background: white;
+  border: 1px solid rgb(148, 148, 148);
+  border-radius: 2px;
+  padding: 10px 18px;
+}
+
+div.cart subtotal{
+  flex-direction: row;
+}
+
+subtotal subtotal-number{
+  align-items: flex-end;
+  padding-left: 55px;
+  min-width: 150px;
+}
+
+div.cart checkout{
+  align-items: flex-end;
+}
+
+checkout pricing-info{
+  flex-direction: row;
+  font-size: 14px;
+  padding: 10px 0 20px;
+  margin-bottom: 25px;
+  color: rgb(105, 114, 123);
+}
+
+a.shipping{
+  margin: 0 3px 0 3px;
+}
+
+div.cart button-group{
+  flex-direction: row;
+}
+
+checkout btn{
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: Alfie, serif;
+  justify-content: center;
+  text-align: center;
+}
+
+button-group btn{
+  line-height: 1;
+  margin-left: 10px;
+}
+
+checkout btn.light{
+  padding: 10px 18px;
+  background: white;
+  border: 1px solid #557b97;
+  border-radius: 2px;
+  color: rgb(85, 123, 151);
+}
+
+/*checkout btn.continue-shopping{
+}
+
+checkout btn.update{
+}*/
+
+checkout btn.dark{
+  width: 100px;
+  padding: 10px 18px;
+  background: #557b97;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  color: #fff;
+}
+
+/* === Cart Item === */
+cart-item item-image{
+  width: 60px;
+  padding-top: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+cart-item > *{
+  justify-content: center;
+}
+
+cart-item btn.remove{
+  align-self: flex-start;
+  padding: 8px 10px;
+  border: 1px solid rgb(37, 40, 43);
+  border-radius: 2px;
+  background: white;
+  text-transform: uppercase;
+  font-family: Alfie, serif;
+  font-size: 11px;
+  text-align: center;
 }

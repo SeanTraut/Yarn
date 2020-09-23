@@ -44,7 +44,7 @@ export function CategoryPage(props: CategoryPageProps) {
 
   console.log(category.product);
 
-  return (
+  return(
     <div>
       <HeaderMain />
       <HeaderCategory {...category} />

@@ -1,11 +1,4 @@
 /* === Category Header === */
-size-wrapper{
-  flex: 0 1 1200px;
-  flex-direction: row;
-  padding: 0 55px;
-  justify-content: space-between;
-}
-
 .subheader-category{
   border-top: 1px solid rgba( 0, 0, 0, .1);
   border-bottom: 1px solid rgba( 0, 0, 0, .1);
