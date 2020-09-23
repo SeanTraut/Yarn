@@ -51,7 +51,7 @@ order-notes note-title{
   font-size: 16px;
 }
 
-order-notes note-box{
+order-notes .note-box{
   width: 400px;
   height: 60px;
   background: white;

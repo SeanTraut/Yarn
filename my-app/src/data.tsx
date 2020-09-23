@@ -3,6 +3,8 @@
 interface Cart {
   itemCount: number;
   products: Product[];
+  subtotal: number;
+  note?: String;
 }
 interface User {
   name: string,
@@ -115,7 +117,7 @@ if(this.rerender){this.rerender();}
       return;
     }
 
-    this.cart = {itemCount: 1, products: [product]};
+    this.cart = {itemCount: 1, products: [product], subtotal: Number(product.price)};
 
     if(this.rerender){this.rerender();}
 
