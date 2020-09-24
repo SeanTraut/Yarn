@@ -134,7 +134,16 @@ class Database{
   }
 
   remove_from_cart(cartitem:CartItem){
-    //this.cart.cartitems.filter(cartitem);
+    console.log("Clicked");
+    let cartitems = this.cart.cartitems;
+    let index;
+    while((index = cartitems.indexOf(cartitem)) > -1){
+      cartitems.splice(index, 1);
+    }
+
+    if(this.rerender){
+      this.rerender();
+    }
   }
 
   get_cart_size(){
