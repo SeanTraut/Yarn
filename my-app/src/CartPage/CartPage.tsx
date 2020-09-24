@@ -1,10 +1,20 @@
 import React from 'react';
-import { db, Product } from '../data';
+import { db, Cart, CartItem } from '../data';
 import { FooterMain, HeaderMain, Button, SizeWrapper } from "../shared";
 
 interface CartPageProps{
+  cart: Cart
 }
 export function CartPage(props:CartPageProps){
+  let items = props.cart.cartitems;
+  let elements:JSX.Element[] = [];
+  
+  for(let item of items){
+    elements.push(<CartItemRow cartitem = {item}/>);
+  }
+
+  /*<CartItemRow cartitem = {props.cart.cartitems[0]}/>*/
+
   return(
     <div className="cart">
       <HeaderMain />
@@ -16,20 +26,20 @@ export function CartPage(props:CartPageProps){
               <column-title>Price</column-title>
               <column-title>Quantity</column-title>
               <column-title>Total</column-title>
-              <CartItem product = {db.cart?.products[0]} />
+              {elements}
             </cart-top>
             <cart-bottom>
               <order-notes>
                 <note-title>Add a note to your order</note-title>
                 <textarea className="note-box">
-                  {db.cart?.note || "This is how text will appear in the note box."}
+                  {props.cart?.note || "This is how text will appear in the note box."}
                 </textarea>
               </order-notes>
               <spacer />
               <checkout>
                 <subtotal>
                   <subtotal-title>Subtotal</subtotal-title>
-                  <subtotal-number>{db.cart?.subtotal || "$0.00"}</subtotal-number>
+                  <subtotal-number>{db.calculate_cart_subtotal(props.cart)}</subtotal-number>
                 </subtotal>
                 <pricing-info>Taxes and <a className="shipping" href="">shipping</a> calculated at checkout</pricing-info>
                 <button-group>
@@ -46,22 +56,28 @@ export function CartPage(props:CartPageProps){
   );
 }
 
-interface CartItemProps{
-  product: Product | undefined;
+interface CartItemRowProps{
+  cartitem: CartItem
 }
+function CartItemRow(props:CartItemRowProps){
+  let product = props.cartitem.product;
+  let quantity = props.cartitem.quantity;
 
-function CartItem(props:CartItemProps){
   return(
     <cart-item>
-      <item-image style={{backgroundImage: `url(${props.product?.pictures[0]})`}} />
+      <item-image-wrapper>
+        <item-image style={{backgroundImage: `url(${product.pictures[0]})`}} />
+      </item-image-wrapper>
       <item-details>
-        <a className="item-title" href="">{props.product?.title}</a>
-        <item-style>Style: {props.product?.category}</item-style>
-        <Button class="remove">Remove</Button>
+        <a className="item-title" href="">{product.title}</a>
+        <item-style>Style: {props.cartitem.style}</item-style>
+        <Button class="remove" onClick={() => db.remove_from_cart(props.cartitem)}>Remove</Button>
       </item-details>
-      <item-price>{props.product?.price}</item-price>
-      <input className="item-quantity" type = "number" value="1"/>
-      <item-total>{}</item-total>
+      <item-price>{product.price}</item-price>
+      <item-quantity-wrapper>
+        <input className="item-quantity" type = "number" value={quantity}/>
+      </item-quantity-wrapper>
+      <item-total>{db.calculate_item_total(product.price, quantity)}</item-total>
     </cart-item>
   );
 }

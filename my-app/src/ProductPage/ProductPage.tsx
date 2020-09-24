@@ -32,7 +32,7 @@ export function ProductPage(props: ProductPageProps) {
                 <Dropdown class="style">{style_sort}</Dropdown>
               </product-type>
               <Button class="add-to-cart"
-                onClick={() => {db.add_to_cart(props.product)}}>
+                onClick={() => {db.add_to_cart(props.product, "a good one")}}>
                 Add to Cart
               </Button>
               <Button class="g-pay">

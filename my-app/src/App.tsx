@@ -75,7 +75,7 @@ class App extends React.Component<{}> {
     }else if(this.state.page === "category"){
       content = <CategoryPage category = {this.state.category}/>;
     }else if(this.state.page === "cart"){
-      content = <CartPage />;
+      content = <CartPage cart = {db.cart} />;
     }else{
       content = <div>404: Page Not Found</div>
     }

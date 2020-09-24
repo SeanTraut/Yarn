@@ -152,8 +152,8 @@ export class Button extends React.Component<ButtonProps> {
     let style = this.props.class;
     
     return (
-      <btn className={style}>
-        <btn-content className={style} onClick={this.props.onClick}>{this.props.children}</btn-content>
+      <btn className={style} onClick={this.props.onClick}>
+        <btn-content className={style}>{this.props.children}</btn-content>
       </btn>
     );
   }
@@ -244,7 +244,7 @@ export function HeaderMain(props:HeaderMainProps) {
           <ion-icon name="person" class="profile"></ion-icon>
           <a className="bag" href="#cart">
             <ion-icon name="lock-closed" class="bag-icon" />
-              <icon-data class="bag-count">{db.cart?.itemCount || 0}</icon-data>
+              <icon-data class="bag-count">{db.get_cart_size()}</icon-data>
           </a>
         </controls>
       </site-header>

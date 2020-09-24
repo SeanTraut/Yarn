@@ -1,9 +1,13 @@
 
 /* === Data Model === */
-interface Cart {
-  itemCount: number;
-  products: Product[];
-  subtotal: number;
+
+export interface CartItem{
+  product: Product;
+  style: string
+  quantity: number;
+}
+export interface Cart {
+  cartitems: CartItem[];
   note?: String;
 }
 interface User {
@@ -46,7 +50,7 @@ class Database{
   categories_by_name:{[name:string]: Category} = {};
   all_users: User[] = [];
   user: User | undefined;
-  cart: Cart | undefined;
+  cart: Cart = {cartitems: []};
   rerender?: Function;
 
   make_product(title:string, price:string, categories:Category[] = [], description?:string, instock?:boolean, featured?:boolean):Product{
@@ -68,16 +72,16 @@ class Database{
     if(this.rerender){this.rerender();}
     
     return product;
-  };
+  }
 
   list_product(names:string[]){
     let products:Product[] = [];
 
     for(let item of names){
       products.push(this.products_by_name[item]);
-    };
+    }
     return products;
-  };
+  }
 
   make_category(type:string, title:string, source:string, products:Product[] = []){
     let category:Category = {type, title, source, product: products};
@@ -91,7 +95,7 @@ class Database{
 
     if(this.rerender){this.rerender();}
     return category;
-  };
+  }
 
   make_user(name:string, email:string, password:string):User{
     let user:User = {name:name, email:email, password:password};
@@ -99,29 +103,72 @@ class Database{
 
     if(this.rerender){this.rerender();}
     return user;
-  };
+  }
 
   set_active_user(user:User){
     this.user = user;
 
-if(this.rerender){this.rerender();}
-  };
-
-  add_to_cart(product:Product){
-    if(this.cart){
-      ++this.cart.itemCount;
-      this.cart.products.push(product);
-
     if(this.rerender){this.rerender();}
+  }
 
-      return;
+  add_to_cart(product:Product, style:string){
+    let cartitem:CartItem = {product: product, style:style, quantity: 1};
+    
+    for(let item of this.cart.cartitems){
+      if(cartitem.product === item.product && cartitem.style === item.style){
+        ++item.quantity;
+
+        if(this.rerender){
+          this.rerender();
+        }
+        return;
+      }
+    }
+    
+    this.cart.cartitems.push(cartitem);
+
+    if(this.rerender){
+      this.rerender();
+    }
+    return;
+  }
+
+  remove_from_cart(cartitem:CartItem){
+    //this.cart.cartitems.filter(cartitem);
+  }
+
+  get_cart_size(){
+    let size = 0;
+    
+    for(let item of this.cart.cartitems){
+      size += item.quantity;
     }
 
-    this.cart = {itemCount: 1, products: [product], subtotal: Number(product.price)};
+    return size;
+  }
+  
 
-    if(this.rerender){this.rerender();}
+  price_to_number(price:string):number{
+    return Number(price.slice(1));
+  }
 
-    return this.cart;
+  /* Needs improved for non-whole dollar amounts */
+  number_to_price(number:number):string{
+    return  '$' + number.toString() + '.00';
+  }
+
+  calculate_item_total(price:string, quantity:number):string{
+    return this.number_to_price(this.price_to_number(price) * quantity);
+  }
+
+  calculate_cart_subtotal(cart:Cart):string{
+    let subtotal = 0;
+
+    for(let item of cart.cartitems){
+      subtotal += (this.price_to_number(item.product.price) * item.quantity);
+    }
+
+    return this.number_to_price(subtotal);
   };
 };
 
@@ -162,4 +209,6 @@ db.make_category("scarf", "Scarf Ties", "http://placekitten.com/805/805", db.lis
   "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach"
 ]));
 
-console.log(db);
+db.add_to_cart(db.products[0], "Nice!");
+db.add_to_cart(db.products[0], "Nice!");
+db.add_to_cart(db.products[1], "Nice!");
