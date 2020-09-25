@@ -146,6 +146,16 @@ class Database{
     }
   }
 
+  update_item_quantity(cartitem:CartItem, value:number){
+    if(value >= 0){
+      cartitem.quantity = value;
+
+      if(this.rerender){
+        this.rerender();
+      }
+    }
+  }
+
   get_cart_size(){
     let size = 0;
     
@@ -217,7 +227,3 @@ db.make_category("wide-wrap", "Wide Wrap", "http://placekitten.com/805/805", db.
 db.make_category("scarf", "Scarf Ties", "http://placekitten.com/805/805", db.list_product([
   "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach"
 ]));
-
-db.add_to_cart(db.products[0], "Nice!");
-db.add_to_cart(db.products[0], "Nice!");
-db.add_to_cart(db.products[1], "Nice!");

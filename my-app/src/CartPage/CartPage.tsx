@@ -75,7 +75,9 @@ function CartItemRow(props:CartItemRowProps){
       </item-details>
       <item-price>{product.price}</item-price>
       <item-quantity-wrapper>
-        <input className="item-quantity" type = "number" value={quantity}/>
+        <input className="item-quantity" type = "number" value={quantity}
+          onChange={(event:React.SyntheticEvent<HTMLInputElement>) => db.update_item_quantity(props.cartitem, +event.currentTarget.value)}
+        />
       </item-quantity-wrapper>
       <item-total>{db.calculate_item_total(product.price, quantity)}</item-total>
     </cart-item>

@@ -175,8 +175,11 @@ item-details btn.remove{
   text-align: center;
 }
 
+cart-item item-quantity-wrapper{
+  align-items: flex-start;
+}
+
 cart-item input.item-quantity{
-  align-self: center;
   width: 60px;
   height: fit-content;
   background: white;

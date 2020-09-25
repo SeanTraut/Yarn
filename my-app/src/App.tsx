@@ -33,7 +33,7 @@ interface AppState{
 
 class App extends React.Component<{}> {
   state: AppState = {
-    page: "cart",
+    page: "category",
     product: db.products[0],
     category: db.categories[0]
   };

@@ -79,37 +79,33 @@ export interface OptionProps {
 }
 interface DropdownProps {
   class: string;
-  children: { value: string; text: string; selected: boolean; }[];
+  children: { value: string; text: string; selected: boolean;}[];
+  selected: string;
+  onChanged: (value:string) => any;
 }
 interface DropdownState {
-  selected: string;
   open: boolean;
 }
 
 export class Dropdown extends React.Component<DropdownProps> {
   state: DropdownState = {
-    selected: "Current Value",
     open: false
   };
 
   toggle_options = () => {
-    console.trace();
 
     this.setState({
-      selected: this.state.selected,
       open: !this.state.open
     });
   };
 
   select_option = (event: React.MouseEvent<HTMLOptionElement>) => {
-    console.trace();
 
     this.setState({
-      selected: (event.target as any as { value: string; })?.value,
       open: false
     });
 
-    console.log((event.target as any as { value: string; })?.value, this.state.selected);
+    this.props.onChanged(event.currentTarget.value);
 
     event.stopPropagation();
   };
@@ -120,7 +116,7 @@ export class Dropdown extends React.Component<DropdownProps> {
     let text = this.props.children[0] ? this.props.children[0].text : "EMPTY";
 
     for (let option of this.props.children) {
-      if (option.value === this.state.selected) {
+      if (option.value === this.props.selected) {
         text = option.text;
       }
 
