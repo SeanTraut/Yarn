@@ -1,15 +1,16 @@
+import { render } from '@testing-library/react';
 import React from 'react';
 import { Category, Product, db} from '../data';
 import { HeaderMain, OptionProps, Dropdown, Gallery, FooterMain } from "../shared";
 
-interface HeaderCategoryProps{
+interface CategoryPageProps {
   category: Category
 }
-interface HeaderCategoryState{
+interface CategoryPageState{
   selected: string
 }
-export class HeaderCategory extends React.Component<HeaderCategoryProps> {
-  state:HeaderCategoryState = {
+export class CategoryPage extends React.Component<CategoryPageProps>{
+  state:CategoryPageState = {
     selected: "title-descending"
   }
 
@@ -17,7 +18,7 @@ export class HeaderCategory extends React.Component<HeaderCategoryProps> {
     console.log(value);
     this.setState({selected:value});
   }
-  
+
   render(){
     let category_sort: OptionProps[] = [/*
       { value: "featured", text: "Featured", selected: false },
@@ -31,49 +32,38 @@ export class HeaderCategory extends React.Component<HeaderCategoryProps> {
     ];
     let selected:string = this.state.selected;
     let category:Category = this.props.category;
-
-    return (
-      <subheader className="subheader-category">
-        <subheader-title className="category-page-title">{category.title}</subheader-title>
-        <sort>
-          <size-wrapper className="category-position">
-            <filter-select>
-              <filter-title>Sort By</filter-title>
-              <Dropdown class="drop-category" selected={selected} onChanged={this.update_selected}>{category_sort}</Dropdown>
-            </filter-select>
-            <filter-count>{category.product.length} products</filter-count>
-          </size-wrapper>
-        </sort>
-      </subheader>
-    );
-  }
-}
-
-interface CategoryPageProps {
-  category: Category
-}
-export function CategoryPage(props: CategoryPageProps) {
-  let category = props.category;
-  let product_sort_elements: JSX.Element[] = [];
-
-  for (let product of category.product) {
-    product_sort_elements.push(<ProductSort product={product} category={category} />);
-  }
-
-  console.log(category.product);
+    let product_sort_elements: JSX.Element[] = [];
+  
+    for (let product of category.product) {
+      product_sort_elements.push(<ProductSort product={product} category={category} />);
+    }
+  
+    console.log(category.product);
 
   return(
-    <div>
-      <HeaderMain />
-      <HeaderCategory category  = {category} />
-      <content class="upper-content">
-        <center-wrapper>
-          <Gallery>{product_sort_elements}</Gallery>
-        </center-wrapper>
-      </content>
-      <FooterMain />
-    </div>
-  );
+      <div>
+        <HeaderMain />
+        <subheader className="subheader-category">
+          <subheader-title className="category-page-title">{category.title}</subheader-title>
+          <sort>
+            <size-wrapper className="category-position">
+              <filter-select>
+                <filter-title>Sort By</filter-title>
+                <Dropdown class="drop-category" selected={selected} onChanged={this.update_selected}>{category_sort}</Dropdown>
+              </filter-select>
+              <filter-count>{category.product.length} products</filter-count>
+            </size-wrapper>
+          </sort>
+        </subheader>
+        <content class="upper-content">
+          <center-wrapper>
+            <Gallery>{product_sort_elements}</Gallery>
+          </center-wrapper>
+        </content>
+        <FooterMain />
+      </div>
+    );
+  }
 }
 
 interface ProductSortProps{
