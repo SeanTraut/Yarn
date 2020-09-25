@@ -22,6 +22,7 @@ export interface Product {
   price: string;
   pictures: string[];
   category: Category[];
+  date: Date;
   description?: string;
   featured?: boolean;
   instock?: boolean;
@@ -53,14 +54,14 @@ class Database{
   cart: Cart = {cartitems: []};
   rerender?: Function;
 
-  make_product(title:string, price:string, categories:Category[] = [], description?:string, instock?:boolean, featured?:boolean):Product{
+  make_product(title:string, price:string, categories:Category[] = [], date:Date = new Date, description?:string, instock?:boolean, featured?:boolean):Product{
     let sources:string[] = [];
     
     for(let i = 0; i < 10; i++){
       sources.push(`https://picsum.photos/seed/${encodeURI(title) + i}/800/800`);
     }
   
-    let product:Product = {title, price, pictures: sources, category: categories, description, instock, featured};
+    let product:Product = {title, price, pictures: sources, category: categories, date: date, description, instock, featured};
     
     for(let category of categories){
       category.product.push(product);
