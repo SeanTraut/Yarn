@@ -212,7 +212,9 @@ export function HeaderMain(props:HeaderMainProps) {
         <bar-message>Order processing time is 1 week. Check out the FAQ tab below.</bar-message>
       </announcement-bar>
       <site-header>
-        <img src="http://placekitten.com/160/95" className="logo" alt="logo" />
+        <a className="logo-link" href="#home">
+          <img src="http://placekitten.com/160/95" className="logo-img" alt="logo" />
+        </a>
         <spacer></spacer>
         <nav>
           <ul>
@@ -224,7 +226,7 @@ export function HeaderMain(props:HeaderMainProps) {
               </dropdown-icon>
             </li>
             <li className="nav-item">
-              <a className = "nav-text">About</a>
+              <a className = "nav-text" href="#about">About</a>
               <dropdown-icon>
                 <ion-icon name="chevron-down"></ion-icon>
               </dropdown-icon>
