@@ -1,0 +1,39 @@
+div.about sub-header.about-title{
+  padding-top: 55px;
+  text-align: center;
+  color: rgb(61, 66, 70);
+  border-top: 1px solid rgba(0,0,0,0.1);
+  font-family: Alfie, serif;
+  font-size: 35px;
+  line-height: 1.2;
+}
+
+div.about size-wrapper{
+  flex-direction: column;
+}
+
+div.about img-wrapper{
+  padding-top: 55px;
+  align-items: center;
+}
+
+div.about img.about-img{
+  flex: 0;
+}
+
+div.about about-blurb{
+  margin: 10px 140px;
+}
+
+about-blurb p{
+  margin: 0 0 20px 0;
+  color: rgb(105, 114, 123);
+  font-family: Abel, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+
+}
+
+about-blurb p.about-who{
+  font-weight: 700;
+}

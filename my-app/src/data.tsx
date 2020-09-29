@@ -167,14 +167,12 @@ class Database{
     return size;
   }
   
-
   price_to_number(price:string):number{
     return Number(price.slice(1));
   }
 
-  /* Needs improved for non-whole dollar amounts */
   number_to_price(number:number):string{
-    return  '$' + number.toString() + '.00';
+    return  '$' + number.toFixed(2);
   }
 
   calculate_item_total(price:string, quantity:number):string{
@@ -204,27 +202,29 @@ db.make_product("Ikat", "$15.00");
 db.make_product("Kelly Green", "$15.00");
 db.make_product("Peach", "$15.00");
 
+db.make_product("TEST PRODUCT", "$99.99", [], new Date('December 17, 1995 03:24:00'));
+
 
 db.make_category("twist", "Twist", "http://placekitten.com/805/805", db.list_product([
-  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach"
+  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach", "TEST PRODUCT"
 ]));
 
 db.make_category("tie", "Tie", "http://placekitten.com/805/805", db.list_product([
-  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach"
+  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach", "TEST PRODUCT"
 ]));
 
 db.make_category("wide-tie", "Wide Tie", "http://placekitten.com/805/805", db.list_product([
-  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach"
+  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach", "TEST PRODUCT"
 ]));
 
 db.make_category("wrap", "Wrap", "http://placekitten.com/805/805", db.list_product([
-  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach"
+  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach", "TEST PRODUCT"
 ]));
 
 db.make_category("wide-wrap", "Wide Wrap", "http://placekitten.com/805/805", db.list_product([
-  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach"
+  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach", "TEST PRODUCT"
 ]));
 
 db.make_category("scarf", "Scarf Ties", "http://placekitten.com/805/805", db.list_product([
-  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach"
+  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach", "TEST PRODUCT"
 ]));

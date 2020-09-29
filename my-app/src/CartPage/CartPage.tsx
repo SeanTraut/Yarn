@@ -13,8 +13,6 @@ export function CartPage(props:CartPageProps){
     elements.push(<CartItemRow cartitem = {item}/>);
   }
 
-  /*<CartItemRow cartitem = {props.cart.cartitems[0]}/>*/
-
   return(
     <div className="cart">
       <HeaderMain />

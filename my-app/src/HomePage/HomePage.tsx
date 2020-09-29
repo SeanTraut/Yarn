@@ -58,7 +58,7 @@ export function CategoryIcon(props: CategoryIconProps) {
   );
 }
 
-function Instagram() {
+export function Instagram() {
   return (
     <instagram>
       <insta-image source="http://placekitten.com/901/901" style={{ backgroundImage: `url('http://placekitten.com/901/901')` }} class="image"></insta-image>
