@@ -204,6 +204,13 @@ db.make_product("Peach", "$15.00");
 
 db.make_product("TEST PRODUCT", "$99.99", [], new Date('December 17, 1995 03:24:00'));
 
+db.make_category("in-stock", "All in Stock Products", "http://placekitten.com/805/805", db.list_product([
+  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach", "TEST PRODUCT"
+]));
+
+db.make_category("", "All in Stock Products", "http://placekitten.com/805/805", db.list_product([
+  "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach", "TEST PRODUCT"
+]));
 
 db.make_category("twist", "Twist", "http://placekitten.com/805/805", db.list_product([
   "Neon Pink", "Leaf", "Fuschia", "Turquoise", "Retro Dot", "Ikat", "Kelly Green", "Peach", "TEST PRODUCT"

@@ -78,7 +78,6 @@ export class CategoryPage extends React.Component<CategoryPageProps>{
     for (let product of sorted_products) {
       product_sort_elements.push(<ProductSort product={product} category={category} />);
     }
-  
   return(
       <div>
         <HeaderMain />

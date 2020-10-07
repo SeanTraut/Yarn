@@ -79,7 +79,7 @@ export interface OptionProps {
 }
 interface DropdownProps {
   class: string;
-  children: { value: string; text: string; selected: boolean;}[];
+  children: any[];
   selected: string;
   onChanged: (value:string) => any;
 }
@@ -87,6 +87,7 @@ interface DropdownState {
   open: boolean;
 }
 
+/* window.location = "#/foo/bar */
 export class Dropdown extends React.Component<DropdownProps> {
   state: DropdownState = {
     open: false
@@ -206,6 +207,7 @@ interface HeaderMainProps{
 }
 
 export function HeaderMain(props:HeaderMainProps) {
+
   return (
     <header>
       <announcement-bar>
@@ -220,7 +222,7 @@ export function HeaderMain(props:HeaderMainProps) {
           <ul>
             <li className="nav-item"><a className = "nav-text" href="#home">Home</a></li>
             <li className="nav-item">
-              <a className = "nav-text">Shop</a>
+              <a className = "nav-text" href="#category/0">Shop</a>
               <dropdown-icon>
                 <ion-icon name="chevron-down"></ion-icon>
               </dropdown-icon>

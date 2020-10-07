@@ -43,9 +43,13 @@ nav li{
   margin: 0 15px;
 }
 
-nav-text:hover{
-  text-decoration: underline;
+a.nav-text{
+  border-bottom: none;
+  line-height: 1;
+}
+a.nav-text:hover{
   color: black;
+  border-bottom: 1px solid black;
 }
 
 dropdown-icon{
